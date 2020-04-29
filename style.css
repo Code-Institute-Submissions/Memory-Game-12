@@ -1,6 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background-image: url(images/tokyo-arcade.jpg);
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    font-family: 'Press Start 2P', cursive;
+    color: cyan; 
+    font-size: 20px; 
+    margin-top: 30px
+}
+
 .grid {
+    border: 10px solid;
+    border-color: cyan;
     display: flex;
     flex-wrap: wrap;
     width: 400px;
-    height: 300;
+    height: 300px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
