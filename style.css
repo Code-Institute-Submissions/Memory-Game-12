@@ -1,23 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-    background-image: url(images/tokyo-arcade.jpg);
-    background-position-x: 50%;
-    background-position-y: 50%;
-    background-size: cover;
     padding: 0;
     margin: 0;
     width: 100%;
-    text-align: center;
+    justify-content: center;
     align-items: center;
     margin: auto;
     font-family: 'Press Start 2P', cursive;
     color: cyan; 
     font-size: 20px; 
-    margin-top: 30px
+    margin-top: 30px;
+    background-color: #060606;
+    text-align: center;
 }
 
-.grid {
+
+  /*--- Navigation bar ---*/
+
+  .navbar {
+    background:#060606;
+  }
+  .nav-link,
+  .navbar-brand {
+    color: #fff;
+    cursor: pointer;
+  }
+  .nav-link {
+    margin-right: 1em !important;
+  }
+  .nav-link:hover {
+    color: #000;
+  }
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+
+  /*--- Header ---*/
+
+  .header {
+    background-image: url('images/tokyo-arcade.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .description {
+    left: 50%;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -55%);
+    text-align: center;
+  }
+  .description h1 {
+    color: #cyan;
+  }
+  .description p {
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .description button {
+    border:1px solid #060606;
+    background:#060606;
+    border-radius: 0;
+    color:#fff;
+  }
+  .description button:hover {
+    border:1px solid #fff;
+    background:#fff;
+    color:#000;
+  }
+
+
+
+  /*--- Memory game grid ---*/
+
+  .grid {
     border: 10px solid;
     border-color: cyan;
     display: flex;
@@ -28,3 +88,88 @@ body {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.container-fluid {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+/*--- 3 colums ---*/
+
+.features {
+    margin: 4em auto;
+    padding: 1em;
+    position: relative;
+    text-align: left;
+  }
+  .feature-title {
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .features img {
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 16px;
+  }
+
+  /*--- Contact form ---*/
+
+  .features .form-control,
+.features input {
+    border-radius: 0;
+}
+.features .btn {
+  background-color: #9933CC;
+  border: 1px solid #9933CC;
+  color: #fff;
+  margin-top: 20px;
+}
+.features .btn:hover {
+  background-color: #333;
+  border: 1px solid #333;
+}
+
+/*--- Footer ---*/
+
+.page-footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 60px 0 30px;
+    text-align: left;
+  }
+  .footer-copyright {
+    color: #555;
+    padding: 40px 0;
+  }
+
+  /*--- Media queries ---*/
+
+  @media (max-width: 575.98px) {
+    .description {
+      left: 0;
+      padding: 0 15px;
+      position: absolute;
+      top: 10%;
+      transform: none;
+      text-align: center;
+    }
+    
+    .description h1 {
+      font-size: 2em;
+    }
+    
+    .description p {
+      font-size: 1.2rem;
+    }
+    
+    .features {
+      margin: 0;
+    }
+  }
+
