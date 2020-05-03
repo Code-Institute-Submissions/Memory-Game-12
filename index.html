@@ -43,7 +43,7 @@
         </div>
     </header>
 <!-- Memory game -->
-    <section>
+    <section class="main">
         <div>
             <h2>MEMORY GAME</h2>
             <h3>SCORE: <span id="result"></span></h3>
@@ -52,9 +52,40 @@
         <div style="width: 100%; height: 100%; align-items:  center;">
             <div class="grid"></div>
         </div>
-        
-    </section>
+    
+<!-- Simon game -->
+<div id="board">
+    <div id="green" class="color"></div>
+    <div id="red" class="color"></div>
+    <div id="blue" class="color"></div>
+    <div id="yellow" class="color"></div>
 
+    <div id="center-board">
+        <img src="images/simon.png" alt="SIMON logo">
+        <div class="row">
+            <div class="button-tag">
+                <div id="level" class="score">00</div>
+                <p>LEVEL</p>
+            </div>
+
+            <div class="button-tag">
+                <div id="highest-level" class="score">00</div>
+                <p>HIGHEST</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="button-tag">
+                <input id="start" class="button" type="button" name="start" value=" ">
+                <p>START</p>
+            </div>
+            <div class="button-tag">
+                <input id="reset" class="button" type="button" name="reset" value=" ">
+                <p>RESET</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
     
 <!-- Information and get intouch feature -->
     <div class="container features">
@@ -104,6 +135,8 @@
             </div>
             <div class="footer-copyright text-center">© 2020 Copyright: Giselle Chacon</div>
     </footer>
+
+<!-- Page footer -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
