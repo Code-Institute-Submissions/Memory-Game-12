@@ -15,7 +15,6 @@ body {
     text-align: center;
 }
 
-
   /*--- Navigation bar ---*/
 
   .navbar {
@@ -55,6 +54,7 @@ body {
   .description h1 {
     color: #cyan;
   }
+
   .description p {
     color: #fff;
     font-size: 1.3rem;
@@ -73,9 +73,12 @@ body {
     color:#000;
   }
 
-
-
   /*--- Memory game grid ---*/
+
+  #memory-game.container-fluid {
+      margin-top: 50px;
+      margin-bottom: 50px;
+  }
 
   .grid {
     border: 10px solid;
@@ -85,195 +88,179 @@ body {
     width: 400px;
     height: 300px;
     margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
 }
 
 .container-fluid {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
 
 }
 
 /*--- Simon game board ---*/
 
-#board {
-    position: relative;
-    width: 600px;
-    height: 600px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-}
-
-.color {
-    width: 300px;
-    height: 300px;
-    cursor: pointer;
-    pointer-events: none;
-}
-
-#green {
-    background-color: green;
-    grid-column: 1/2;
-    grid-row: 1/2;
-    border-radius: 100% 0 0 0;
-}
-
-#green:active {
-    background: radial-gradient(ellipse at center, #d2ff52 0%, #91e842 100%);
-    box-shadow: inset 0 0 30px #000000;
-}
-
-#red {
-    background: red;
-    grid-column: 2/3;
-    grid-row: 1/2;
-    border-radius: 0 100% 0 0;
-}
-
-#red:active {
-    background: radial-gradient(ellipse at center, #ff1a00 0%, #ff1a00 100%);
-    box-shadow: inset 0 0 30px #000000;
-}
-
-#blue {
-    background-color: blue;
-    grid-column: 1/2;
-    grid-row: 2/3;
-    border-radius: 0 0 0 100%;
-}
-
-#blue:active {
-    background: radial-gradient(ellipse at center, #499bea 0%, #207ce5 100%);
-    box-shadow: inset 0 0 30px #000000;
-}
-
-#yellow {
-    background-color: #ffcc00;
-    grid-column: 2/3;
-    grid-row: 2/3;
-    border-radius: 0 0 100% 0;  
-}
-
-#yellow:active {
-    background: radial-gradient(ellipse at center, #ffff88 0%, #ffff88 100%);
-    box-shadow: inset 0 0 30px #000000;
+.toggle {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .button {
-    width: 25px;
-    height: 25px;
-    border: solid 2px black;
-    border-radius: 100%;
-    box-shadow: inset 0 0 2px #000000;
-    font-size: 3em;
-    cursor: pointer;
-    margin-bottom: 10px;
+    border-radius: 50% !important;
+    font-size: 1.5em;
+    background-color: lightgrey;
 }
 
-#start {
-    background-color: red;
+#switches {
+    position: absolute;
+    margin-left: 26px;
+    margin-top: 20px;
 }
 
-.button:active {
-    box-shadow: inset 0 0 5px #000000;
+.text2 {
+    position: absolute;
+    margin-left: 83px;
+    margin-top: 150px;
 }
 
-#reset {
-    background-color: yellow;
+.text1 {
+    position: absolute;
+    margin-left: 19px;
+    margin-top: 142px;
 }
 
-button:focus {
-    outline: none;
+.text1 span:last-child {
+    padding-left: 70px;
 }
 
-.greenClicked {
-    background: radial-gradient(ellipse at center, #d2ff52 0%, #91e842 100%);
-    box-shadow: inset 0 0 30px #000000;
-  }
-  
-  .redClicked {
-    background: radial-gradient(ellipse at center, #ff1a00 0%, #ff1a00 100%);
-    box-shadow: inset 0 0 30px #000000;
-  }
-  
-  .blueClicked {
-    background: radial-gradient(ellipse at center, #499bea 0%, #207ce5 100%);
-    box-shadow: inset 0 0 30px #000000;
-  }
-  
-  .yellowClicked {
-    background: radial-gradient(ellipse at center, #ffff88 0%, #ffff88 100%);
-    box-shadow: inset 0 0 30px #000000;
-  }
+#title {
+    position: absolute;
+    font-size: 40px;
+    margin-left: 35px;
+    margin-top: 40px;
+}
 
-  #center-board {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 300px;
-      height: 300px;
-      left: 25%;
-      top: 25%;
-      border-radius: 100%;
-      border: solid 1em;
-      box-sizing: border-box;
-      background: silver;
-  }
+#turn {
+    position: absolute;
+    background: #330000;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    margin-left: 90px;
+    margin-top: 170px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
 
-  .row {
-      display: flex;
-      width: 55%;
-      justify-content: space-between;
-      padding: 3% 0;
-  }
+#outer-circle {
+    background: #385a94;
+    border-radius: 50%;
+    height: 500px;
+    width: 500px;
+    position: relative;
+    border-style: solid;
+    border-width: 10px;
+    margin: auto;
+    margin-top: 300px;
+    box-shadow: 8px 8px 15px 5px #888888;
+}
 
-  .button-tag {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
+#top-left {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 250px 0 0 0;
+    -moz-border-radius:250px 0 0 0;
+    -webkit-border-radius: 250px 0 0 0;
+    background: darkgreen;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0px 0px -250px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-  .score {
-      color: lightgreen;
-      background-color: black;
-      padding: 5px 5px 5px 10px;
-      margin-bottom: 10px;
-      font-size: 24px;
-      letter-spacing: 5px;
-      display: flex;
-      justify-content: center;
-  }
+#top-right {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 250px 0 0;
+    -moz-border-radius: 0 250px 0 0;
+    -webkit-border-radius: 0 250px 0 0;
+    background: darkred;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0px 0px 0px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-  .start {
-    background: radial-gradient(ellipse at center, white 0%, white 100%);
-    box-shadow: inset 0 0 0 #000000;
-  }
+#bottom-left {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 0 0 250px;
+    -moz-border-radius: 0 0 0 250px;
+    -webkit-border-radius: 0 0 0 250px;
+    background: goldenrod;
+    top: 50%;
+    left: 50%;
+    margin: 0px -250px 0px -250px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-  .success {
-      filter: drop-shadow(0 0 80px green);
-  }
+#bottom-right {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 0 0 250px 0;
+    -moz-border-radius: 0 0 250px 0;
+    -webkit-border-radius: 0 0 250px 0;
+    background: darkblue;
+    top: 50%;
+    left: 50%;
+    margin: 0px 0px -250px 0px;
+    border-style: solid;
+    border-width: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-  .failure {
-      filter: drop-shadow(0 0 80px red);
-  }
+#inner-circle {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    background: darkgray;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0px 0px -125px;
+    border-style: solid;
+    border-width: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 
-  img {
-      width: 200px;
-  }
-
-  
 
 
-
-
-
-/*--- 3 colums ---*/
+/*--- 3 colums information ---*/
 
 .features {
     margin: 4em auto;
