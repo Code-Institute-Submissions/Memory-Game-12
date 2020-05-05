@@ -9,10 +9,23 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="app.js" charset="utf-8"></script>
+
+    <audio id="clip1">
+        <source src="audio/green.mp3"></source>
+    </audio>
+    <audio id="clip2">
+        <source src="audio/red.mp3"></source>
+    </audio>
+    <audio id="clip3">
+        <source src="audio/yellow.mp3"></source>
+    </audio>
+    <audio id="clip4">
+        <source src="audio/blue.mp3"></source>
+    </audio>
 </head>
 
 <body>
-<!-- Navbar menu -->
+    <!-- Navbar menu -->
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="#">Logo</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -32,7 +45,7 @@
             </ul>
         </div>
     </nav>
-<!-- Page header -->
+    <!-- Page header -->
     <header class="page-header header container-fluid">
         <div class="description">
             <h1>ARCADE GAMES</h1>
@@ -42,52 +55,42 @@
             <button class="btn btn-outline-secondary btn-lg">Play!</button>
         </div>
     </header>
-<!-- Memory game -->
-    <section class="main">
-        <div>
-            <h2>MEMORY GAME</h2>
-            <h3>SCORE: <span id="result"></span></h3>
-        </div>
-
-        <div style="width: 100%; height: 100%; align-items:  center;">
-            <div class="grid"></div>
-        </div>
+    <!-- Memory game -->
     
-<!-- Simon game -->
-<div id="board">
-    <div id="green" class="color"></div>
-    <div id="red" class="color"></div>
-    <div id="blue" class="color"></div>
-    <div id="yellow" class="color"></div>
-
-    <div id="center-board">
-        <img src="images/simon.png" alt="SIMON logo">
-        <div class="row">
-            <div class="button-tag">
-                <div id="level" class="score">00</div>
-                <p>LEVEL</p>
+        <div id="memory-game" class="container-fluid">
+            <div>
+                <h2>MEMORY GAME</h2>
+                <h3>SCORE: <span id="result"></span></h3>
             </div>
-
-            <div class="button-tag">
-                <div id="highest-level" class="score">00</div>
-                <p>HIGHEST</p>
+            <div>
+                <div class="grid"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="button-tag">
-                <input id="start" class="button" type="button" name="start" value=" ">
-                <p>START</p>
-            </div>
-            <div class="button-tag">
-                <input id="reset" class="button" type="button" name="reset" value=" ">
-                <p>RESET</p>
+
+        <!-- Simon game -->
+        <div id="outer-circle">
+            <div id="top-left"></div>
+            <div id="top-right"></div>
+            <div id="bottom-left"></div>
+            <div id="bottom-right"></div>
+            <div id="inner-circle">
+                <h2>SIMON</h2>
+                <div id="switches">
+                    <input type="checkbox" class="toggle" id="on">
+                    <button class="button" id="start">START</button>
+                    <input type="checkbox" class="toggle" id="strict">
+                </div>
+                <div class="text1">
+                    <span>POWER</span><span>STRICT</span>
+                </div>
+                <div id="turn"></div>
+                <div class="text2">
+                    COUNT
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
-    
-<!-- Information and get intouch feature -->
+
+    <!-- Information and get intouch feature -->
     <div class="container features">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -118,7 +121,7 @@
         </div>
     </div>
 
-<!-- Page footer -->
+    <!-- Page footer -->
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -130,13 +133,13 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h6 class="text-uppercase font-weight-bold">Contact</h6>
                     <p>Dublin, Ireland
-                        <br />gisecn@gmail.com.com</p>
+                        <br/>gisecn@gmail.com.com</p>
                 </div>
             </div>
             <div class="footer-copyright text-center">© 2020 Copyright: Giselle Chacon</div>
     </footer>
 
-<!-- Page footer -->
+    <!-- Page footer -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
