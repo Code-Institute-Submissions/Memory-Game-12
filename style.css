@@ -3,16 +3,20 @@
 body {
     padding: 0;
     margin: 0;
+    height: 100%;
     width: 100%;
     justify-content: center;
     align-items: center;
     margin: auto;
     font-family: 'Press Start 2P', cursive;
-    color: cyan; 
     font-size: 20px; 
     margin-top: 30px;
     background-color: #060606;
     text-align: center;
+}
+
+h1, h2, h3 {
+    color: lightseagreen;
 }
 
   /*--- Navigation bar ---*/
@@ -50,9 +54,7 @@ body {
     top: 45%;
     transform: translate(-50%, -55%);
     text-align: center;
-  }
-  .description h1 {
-    color: #cyan;
+    margin-top: 100px;
   }
 
   .description p {
@@ -61,33 +63,21 @@ body {
     line-height: 1.5;
   }
 
-  .description button {
-    border:1px solid #060606;
-    background:#060606;
-    border-radius: 0;
-    color:#fff;
-  }
-  .description button:hover {
-    border:1px solid #fff;
-    background:#fff;
-    color:#000;
-  }
-
   /*--- Memory game grid ---*/
 
   #memory-game.container-fluid {
-      margin-top: 50px;
+      margin-top: 100px;
       margin-bottom: 50px;
   }
 
   .grid {
-    border: 10px solid;
-    border-color: cyan;
+    border-color: lightseagreen;
     display: flex;
     flex-wrap: wrap;
     width: 400px;
     height: 300px;
     margin: auto;
+    margin-top: 50px;
 }
 
 img {
@@ -95,51 +85,55 @@ img {
     height: 100px;
 }
 
-.container-fluid {
-    text-align: center;
-
-}
-
 /*--- Simon game board ---*/
 
+.container {
+    text-align: center;
+    height: 100%;
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+
 .toggle {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-top: 28px;
+    margin-left: 43px;
+}
+
+input#strict.toggle {
+    margin-left: 91px;
+}
+
+input#on.toggle {
+    margin-left: 18px;
 }
 
 .button {
-    border-radius: 50% !important;
-    font-size: 1.5em;
+    font-size: 1.1em;
     background-color: lightgrey;
+    margin-top: 25px;
 }
 
 #switches {
     position: absolute;
     margin-left: 26px;
-    margin-top: 20px;
-}
-
-.text2 {
-    position: absolute;
-    margin-left: 83px;
-    margin-top: 150px;
 }
 
 .text1 {
     position: absolute;
-    margin-left: 19px;
-    margin-top: 142px;
+    margin-left: 16px;
+    margin-top: 55px;
+    font-size: 14px;
 }
 
 .text1 span:last-child {
-    padding-left: 70px;
+    padding-left: 50px;
 }
 
-#title {
+.text2 {
     position: absolute;
-    font-size: 40px;
-    margin-left: 35px;
-    margin-top: 40px;
+    margin-left: 78px;
+    margin-top: 133px;
+    font-size: 14px;
 }
 
 #turn {
@@ -150,8 +144,8 @@ img {
     font-size: 20px;
     height: 30px;
     width: 50px;
-    margin-left: 90px;
-    margin-top: 170px;
+    margin-left: 88px;
+    margin-top: 100px;
     text-align: center;
     vertical-align: middle;
     line-height: 30px;
@@ -166,8 +160,7 @@ img {
     border-style: solid;
     border-width: 10px;
     margin: auto;
-    margin-top: 300px;
-    box-shadow: 8px 8px 15px 5px #888888;
+    margin-top: 50px;
 }
 
 #top-left {
@@ -257,8 +250,6 @@ img {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-
-
 
 /*--- 3 colums information ---*/
 
