@@ -1,13 +1,30 @@
-//header
+// Header
 document.addEventListener('DOMContentLoaded', () => {
     $(document).ready(function () {
         $('.header').height($(window).height());
     })
+
 })
 
-//memory game
+
+
+
+
+/**
+ * Smooth scrolling, adapted from https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+ 
+$(window).on("scroll", function() {
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        $("#btn-to-top").addClass("active");
+    } else {
+        $("#btn-to-top").removeClass("active");
+    }
+});
+*/
+
+// MEMORY GAME
 document.addEventListener('DOMContentLoaded', () => {
-    //card options
+    // Card options
     const cardArray = [
         {
             name: 'orange-flower',
@@ -67,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var cardsChosenId = []
     const cardsWon = []
 
-    //create board
+    // Create board
     function createBoard() {
         for (let i = 0; i < cardArray.length; i++) {
             var card = document.createElement('img')
@@ -78,21 +95,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //check for matches
+    // Check for matches
     function checkForMatch() {
         var cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
 
         if (cardsChosen[0] === cardsChosen[1]) {
-            alert('You found a match!')
+            Swal.fire(
+                'Good job!',
+                'You found a match!',
+                'success'
+              )
             cards[optionOneId].setAttribute('src', 'images/white.png')
             cards[optionTwoId].setAttribute('src', 'images/white.png')
             cardsWon.push(cardsChosen)
         } else {
             cards[optionOneId].setAttribute('src', 'images/cover.png')
             cards[optionTwoId].setAttribute('src', 'images/cover.png')
-            alert('Sorry :( try again!')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Sorry :( try again!',
+              })
         }
         cardsChosen = []
         cardsChosenId = []
@@ -102,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //Flip cards
+    // Flip cards
     function flipCard() {
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
@@ -112,15 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(checkForMatch, 500)
         }
     }
-
     createBoard()
-
 })
 
 
-//SIMON game
+// SIMON GAME
 document.addEventListener('DOMContentLoaded', () => {
-//Boad game object that controls most of the flow of the game
+// Board game object that controls most of the flow of the game
 let order = [];
 let playerOrder = [];
 let flash;
@@ -133,7 +156,7 @@ let noise = true;
 let on = false;
 let win;
 
-//Elements user interacts with when playing the game
+// Elements that user interacts with when playing the game
 const turnCounter = document.querySelector('#turn');
 const topLeft = document.querySelector('#top-left');
 const topRight = document.querySelector('#top-right');
@@ -143,7 +166,6 @@ const strictButton = document.querySelector('#strict');
 const onButton = document.querySelector('#on');
 const startButton = document.querySelector('#start');
 
-
 strictButton.addEventListener('click', (event) => {
     if (strictButton.checked == true) {
         strict = true;
@@ -152,7 +174,7 @@ strictButton.addEventListener('click', (event) => {
     }
 });
 
-//Turn on the game board
+// Turn ON the game board
 onButton.addEventListener('click', (event) => {
     if (onButton.checked == true) {
         on = true;
@@ -165,14 +187,14 @@ onButton.addEventListener('click', (event) => {
     }
 });
 
-//Function START for user to start the game
+// Function START for user to start the game
 startButton.addEventListener('click', (event) => {
     if (on || win) {
         play();
     }
 });
 
-//Function set conditions to start play the game
+// Function set conditions to start play the game
 function play() {
     win = false;
     order = [];
@@ -191,7 +213,7 @@ function play() {
 
 function gameTurn() {
     on = false;
-    
+
     if (flash == turn) {
         clearInterval(intervalId);
         compTurn = false;
@@ -211,7 +233,7 @@ function gameTurn() {
     }
 }
 
-//functions in charge of audio for each color
+// Functions in charge of audio for each color
 function one() {
     if (noise) {
         let audio = document.getElementById('clip1');
@@ -357,9 +379,23 @@ function check() {
         turnCounter.innerHTML = 'WIN!';
         on = false;
         win = true;
+        
     }
 
 })
+
+// Function in the navbar to refresh page which refresh the games to start over
+function refreshPage() {
+    window.location.reload()
+}
+
+
+
+
+
+
+
+
 
 
 
