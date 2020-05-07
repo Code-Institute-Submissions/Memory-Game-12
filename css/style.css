@@ -53,6 +53,7 @@ h1, h2, h3, h4 {
     background-size: cover;
     background-position: center;
     position: relative;
+    max-height: 600px;
   }
 
   .overlay {
@@ -70,7 +71,7 @@ h1, h2, h3, h4 {
     top: 45%;
     transform: translate(-50%, -55%);
     text-align: center;
-    margin-top: 100px;
+    margin-top: 70px;
   }
 
   .description p {
@@ -326,7 +327,7 @@ input#on.toggle {
     padding: 40px 0;
   }
 
-  /*--- Media queries ---*/
+  /*--- Media queries, Small devices (landscape phones, 576px and up) ---*/
 
   @media (max-width: 575.98px) {
     .description {
@@ -350,19 +351,4 @@ input#on.toggle {
       margin: 0;
     }
   }
-
-  // Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
 
