@@ -3,6 +3,8 @@
 ## Overview
 A retro-style game app build using JavaScript, HTML and CSS
 
+[Live Demo:] (https://gisellenessi.github.io/Memory-Game/)
+
 Memory game app features two games, first being a simple memory card game where the user can find the match over two cards at the time, you can win by finding all the matches.
 The second game features the classic Simon, the game board has instructions on how to play including sound and colour sequences as the user plays. Both games keep count of the score while play and the app has an option to refresh both games to start over again.
 
