@@ -3,7 +3,7 @@
 ## Overview
 A retro-style game app build using JavaScript, HTML and CSS
 
-[Live Demo:] (https://gisellenessi.github.io/Memory-Game/)
+### Live Demo: [https://gisellenessi.github.io/Memory-Game/]
 
 Memory game app features two games, first being a simple memory card game where the user can find the match over two cards at the time, you can win by finding all the matches.
 The second game features the classic Simon, the game board has instructions on how to play including sound and colour sequences as the user plays. Both games keep count of the score while play and the app has an option to refresh both games to start over again.
@@ -16,7 +16,7 @@ The target audience for this game app is game lovers, kids and adults interested
 ## UX
 This project recreates the classic games of memory card and Simon in a modern a retro-style single page application.
 
-In order to make the user experience as easy as possible as well as fun I decided for a simple Single-Page Applications that includes a header introduction, a navigation menu, refresh button to start a new game, footer with contact information, all this easy an accessible for the user to interact with the app.
+In order to make the user experience as easy as possible as well as fun, I decided for a simple Single-Page Applications that includes a header introduction, a navigation menu, refresh button to start a new game, footer with contact information, all this easy and accessible for the user to interact with the app.
 
 ### User stories
 
@@ -35,68 +35,87 @@ Be able to get in touch with the owner of the app for feedback
 For more accessibility provide sound where possible to be able to play the game if user poor visibility or disability
 
 ## Design
-Framework
-Colour palette
-Fonts
+Design and layout are mainly focused on fun and simplicity. 
+
+### Framework
+Bootstrap was used as my framework of choice due to its flexibility in responsiveness and modern look and feel classes.
+
+### Colour palette
+Colour palette was chosen for the user to have fun, a high contrast and a dark mode visual application to simulate real arcade environments full of colours and bright lights.
+
+### Fonts
+The game app uses two fonts from Google fonts, first, font-family is ‘Press Start 2P'’ use for all title, this simulates a pixel-like font to be in line with the theme of the application and the second font-family is 'Roboto Mono' use for the rest of text and paragraphs for an easier to read font for more heavy text throughout the application.
+
 Responsitivity
 Wireframes
 
 ## Features
 ### Features in use 
-
-### Easy navigation
-Navbar: Contains logo link, contact buttons to navegate to a contact form and social icons and a “refresh games” button to start the games again. Nvegation is intuitive and clear.
-All content is display in a single page and scrolling through dirfferent sections is highlightied by the spy in the navbar.
-Refresh game buttons - Located on the navbar as well as the footer, this will reset the page and start over the games again.
-Interactivity: The game app will give clear feedback about the game being play and how to interact with it, including keeping score, alert for right or wrong and finally when user win the game.
-Audio: The simon game has sound implement when user is playing to indicate game sequence.
-Strict: The simon game has an option to play ‘strict’ as in the original game, this is a function for the user if the choice is to play with higher dificulty if selected as the game will not allow for any mistake or will be game over and the game will re-start again.
+* Navbar: Contains logo link, contact buttons to navigate to a contact form and social icons and a “refresh games” button to start the games again. Navigation is intuitive and clear.
+* All content is display in a single page and scrolling through different sections is highlighted by the spy in the navbar.
+* Refresh game buttons - Located on the navbar as well as the footer, this will reset the page and start over the games again.
+* Interactivity: The game app will give clear feedback about the game being played and how to interact with it, including keeping score, alert for right or wrong and finally when the user wins the game.
+* Audio: The Simon game has sound implement when the user is playing to indicate game sequence.
+* Strict: The Simon game has an option to play ‘strict’ as in the original game, this is a function for the user if the choice is to play with higher difficulty if selected as the game will not allow for any mistake or will be game over and the game will re-start again.
+* Contact form email send working
 
 ### To be implemented
+* To add difficulties
+* To add an option for having a second player
+* To add more retro games to build an arcade of games
+* To add a login feature for users to keep the history of their scores
 
-To add difficulties
-To add an option for having a second player
-To add more retro games to build an arcade of games
-To add a login feature for users to keep history of their scores
 
 ## Technologies used
 The languages, frameworks, libraries and other tools utilised for building this retro gaming app are:
 
-HTML5 - The gaming app uses HTML5 as a fundamental basis for building the app.
-CSS3 - The game app uses CSS3 for styling of all elements within the website. It is linkend from the page to the style.css file and is used for all content, including such as colour pallets, navbar, background, images, title, fonts, etc.
-Bootstrap 4.1.3 - The Bootstrap framework has been used to implement the layout of the game app also used to implement responsiveness and mobile fist design.
-JavaScripts - The game app uses Javascript to provide dynamic interactivity with its users, Javascript provides all the functionalities of the games
-jQuery - The game app uses jQuery to simplify some task, such as DOM manipulation.
-Email.js - To send emails through the contact form
-Fontawesome - The game uses fontawesome for all icons.
-VScode - Visual Studio Code my IDE of choice for this project.
-Github - Has been used for version control of the code using Git functions and remote storage of the project.
-Google fonts - The game app uses Google fonts for all project fonts.
+* HTML5 - The gaming app uses HTML5 as a fundamental basis for building the app.
+* CSS3 - The game app uses CSS3 for the styling of all elements within the website. It is linked from the page to the style.css file and is used for all content, including such as colour pallets, navbar, background, images, title, fonts, etc.
+* Bootstrap 4.1.3 - The Bootstrap framework has been used to implement the layout of the game app also used to implement responsiveness and mobile fist design.
+* JavaScripts - The game app uses Javascript to provide dynamic interactivity with its users, Javascript provides all the functionalities of the games
+* jQuery - The game app uses jQuery to simplify some task, such as DOM manipulation.
+* Sweetalert2 - Use for alerts on the memory card game, add more fun and interactivity when playing the game in both cases matching or not matching the cards.
+* Email.js - To send emails through the contact form
+* Fontawesome - The game uses fontawesome for all icons.
+* VScode - Visual Studio Code my IDE of choice for this project.
+* Github - Has been used for version control of the code using Git functions and remote storage of the project.
+* Google fonts - The game app uses Google fonts for all project fonts.
 
-Testing
+## Testing
 Validators
-Manual test 
+
+### Manual test 
+Several manual tests were performed to ensure the best possible user experience. 
+Various methods of testing have been performed to ensure the best possible user experience. The aim is to check the functionality of the code on different devices (mobile, tablet, desktop) with an overall perspective of the responsive and mobile-first design. The site has been viewed and tested in Firefox, Safari, Chrome and Explorer. The devices used to test the site are iPhone 5/SE, Samsung Galaxy, iPad, iPhone X, iPhone 6/7/8 and Macbook Pro laptop.
+
 Compatibility
 Known issues
 
 ## Deployment
-The game app is designed in VS code environment and regularly committed to Github after each important piece of code and changes.
 
-To deploy the project to Github repository the following steps were taken:
-Created master branch in Github repository
-Used Local VS code environment to code and build the site
-Committed files to the staging area using zhs terminal commands: git status, add (specify directory), git commit -m “add message”
-Pushed files to working environment using git push, which updates the repository, it’s also viable as a link (link to GitHub) for cloning, testing on any device and screens.
-Published site from master branch using settings tab in the main page of the repository, select source as master branch, then save.
-Github pages
-The repository can be cloned by clicking Clone or Download on the main page of the repository
-In the clone with HTTP section, click the click board icon to copy the URL for the repository
-Open Git zhs terminal
-Type git clone, and then paste the URL
-Press Enter. A local clone will be created
+* To deploy the project to Github repository the following steps were taken:
+* Created master branch in Github repository
+* Created a new branch to implement the Simon game feature, once tested and working then merch to the master branch
+* Used Local VS code environment to code and build the site
+* Committed files to the staging area using zhs terminal commands: git status, add (specify directory), git commit -m “add message”
+* Pushed files to the working environment using git push, which updates the repository, it’s also viable as a link (link to GitHub) for cloning, testing on any device and screens.
+* Published site from master branch using settings tab in the main page of the repository, select source as a master branch, then save.
+* The repository can be cloned by clicking Clone or Download on the main page of the repository
+* In the clone with HTTP section, click the click board icon to copy the URL for the repository
+* Open Git zhs terminal
+* Type git clone, and then paste the URL
+* Press Enter. A local clone will be created
 
-Local deployment
-Live version
+### Live Version
+The live version of this website is hosted on GitHub Pages and will update as new commits occur.
+
+The method used to deploy this website was as follows:
+
+* In GitHub, navigated to my repository.
+* Under my repository, clicked "Settings".
+* Under the "GitHub Pages" section, used the Source drop-down menu and selected a publishing source, in this case the Master Branch .
+* The website was immediately published and a green tab appeared with a link to the live website.
+* The link obtained is the one displaying at the top of this document.
 
 Credits
 Content
