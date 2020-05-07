@@ -6,29 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-
-
-
-
-/**
- * Smooth scrolling, adapted from https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
- 
-$(window).on("scroll", function() {
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        $("#btn-to-top").addClass("active");
-    } else {
-        $("#btn-to-top").removeClass("active");
-    }
-});
-*/
-
 // MEMORY GAME
 document.addEventListener('DOMContentLoaded', () => {
     // Card options
     const cardArray = [
         {
             name: 'orange-flower',
-            img: 'images/orange-flower.png'
+            img: 'images/orange-flower.png' 
         },
         {
             name: 'frog',
@@ -75,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img: 'images/monster.png'
         }
     ]
-
+    // Random selection of cards
     cardArray.sort(() => 0.5 - Math.random())
 
     const grid = document.querySelector('.grid')
@@ -100,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
-
+        // Conditions if player gets a match
         if (cardsChosen[0] === cardsChosen[1]) {
             Swal.fire(
                 'Good job!',
@@ -110,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[optionOneId].setAttribute('src', 'images/white.png')
             cards[optionTwoId].setAttribute('src', 'images/white.png')
             cardsWon.push(cardsChosen)
-        } else {
+        } else {// Conditions if player doesn't get match
             cards[optionOneId].setAttribute('src', 'images/cover.png')
             cards[optionTwoId].setAttribute('src', 'images/cover.png')
             Swal.fire({
@@ -118,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Oops...',
                 text: 'Sorry :( try again!',
               })
-        }
+        } // Conditions if player match them all
         cardsChosen = []
         cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
@@ -143,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SIMON GAME
 document.addEventListener('DOMContentLoaded', () => {
-// Board game object that controls most of the flow of the game
+// Board game controls most of the flow of the game
 let order = [];
 let playerOrder = [];
 let flash;
@@ -166,6 +150,7 @@ const strictButton = document.querySelector('#strict');
 const onButton = document.querySelector('#on');
 const startButton = document.querySelector('#start');
 
+// Strict button option for higher dificulty
 strictButton.addEventListener('click', (event) => {
     if (strictButton.checked == true) {
         strict = true;
@@ -174,7 +159,7 @@ strictButton.addEventListener('click', (event) => {
     }
 });
 
-// Turn ON the game board
+// Power ON button to turn on the game board
 onButton.addEventListener('click', (event) => {
     if (onButton.checked == true) {
         on = true;
@@ -187,14 +172,14 @@ onButton.addEventListener('click', (event) => {
     }
 });
 
-// Function START for user to start the game
+// START button for user to start sequence of the game
 startButton.addEventListener('click', (event) => {
     if (on || win) {
         play();
     }
 });
 
-// Function set conditions to start play the game
+// Play function set conditions to start first round of the game
 function play() {
     win = false;
     order = [];
@@ -204,13 +189,14 @@ function play() {
     turn = 1;
     turnCounter.innerHTML = 1;
     good = true;
-    for (var i = 0; i < 20; i++) {
+    for (let i = 0; i < 20; i++) {
         order.push(Math.floor(Math.random() * 4) + 1);
     }
     compTurn = true;
     intervalId = setInterval(gameTurn, 800);
 }
 
+// Function calls for computer sequence turn, flashing lights
 function gameTurn() {
     on = false;
 
@@ -228,12 +214,12 @@ function gameTurn() {
             if (order[flash] == 2) two();
             if (order[flash] == 3) three();
             if (order[flash] == 4) four();
-            flash++
+            flash++;
         }, 200);
     }
 }
 
-// Functions in charge of audio for each color
+// Set of functions in charge of playing audio for each color
 function one() {
     if (noise) {
         let audio = document.getElementById('clip1');
@@ -258,7 +244,7 @@ function three() {
         audio.play();
     }
     noise = true;
-    bottomLeft.style.backgroundColor = 'yellow';//change all colors to hex
+    bottomLeft.style.backgroundColor = 'yellow';
 }
 
 function four() {
@@ -270,13 +256,14 @@ function four() {
     bottomRight.style.backgroundColor = 'lightskyblue';
 }
 
+// Function to clear colors after sequence
 function clearColor() {
     topLeft.style.backgroundColor = 'darkgreen';
     topRight.style.backgroundColor = 'darkred';
     bottomLeft.style.backgroundColor = 'goldenrod';
     bottomRight.style.backgroundColor = 'darkblue';
 }
-
+// Function to flash computer sequence colors
 function flashColor() {
     topLeft.style.backgroundColor = 'lightgreen';
     topRight.style.backgroundColor = 'tomato';
@@ -284,6 +271,7 @@ function flashColor() {
     bottomRight.style.backgroundColor = 'lightskyblue';
 }
 
+// Set of functions to check if the player is correct
 topLeft.addEventListener('click', (event) => {
     if (on) {
         playerOrder.push(1);
@@ -336,11 +324,12 @@ bottomRight.addEventListener('click', (event) => {
     }
 })
 
+// Function check if player is correct or incorrect when following the sequence as the computer
 function check() {
     if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
         good = false;
 
-        if (playerOrder.length == 3 && good) {
+        if (playerOrder.length == 20 && good) {
             winGame();
         }
 
@@ -351,6 +340,7 @@ function check() {
                 turnCounter.innerHTML = turn;
                 clearColor();
 
+                // If playing strict this functions will re-start the game if player got something wrong
                 if (strict) {
                     play();
                 } else {
@@ -364,6 +354,7 @@ function check() {
             noise = false;
         }
 
+        // Set confitions if player has correct sequence
         if (turn == playerOrder.length && good && !win) {
             turn++;
             playerOrder = [];
@@ -373,7 +364,7 @@ function check() {
             intervalId = setInterval(gameTurn, 800)
         }
     }
-
+    // Condition if player follow sequence correctly and win the game
     function winGame() {
         flashColor();
         turnCounter.innerHTML = 'WIN!';
@@ -384,7 +375,7 @@ function check() {
 
 })
 
-// Function in the navbar to refresh page which refresh the games to start over
+// Function in the navbar which refresh the games to start over
 function refreshPage() {
     window.location.reload()
 }

@@ -1,42 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono&display=swap');
 
+/*--- Smooth scrolling behavior for navigation ---*/
 html {
     scroll-behavior: smooth;
   }
 
 body {
     padding: 0;
-    margin: 0;
     height: 100%;
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 30px;
     background-color: #0F0C24;
     text-align: center;
     font-family: 'Roboto Mono', monospace;
 }
 
 h1, h2, h3, h4 {
-    color: #fdc40f ;
+    color: #ffc107;
     font-family: 'Press Start 2P', cursive;
 }
 
   /*--- Navigation bar ---*/
 
   .navbar {
-    background:#A350A3;
+    background:#6610f2;
   }
   .nav-link,
   .navbar-brand {
     color: #fff;
     cursor: pointer;
   }
+  .navbar-brand {
+    color: #ffc107 ;
+    font-family: 'Press Start 2P', cursive;
+    margin-left: 10px;
+  }
   .nav-link {
     margin-right: 1em !important;
   }
   .nav-link:hover {
-    color: #000;
+    color: #333;
   }
   .navbar-collapse {
     justify-content: flex-end;
@@ -45,7 +49,7 @@ h1, h2, h3, h4 {
   /*--- Header ---*/
 
   .header {
-    background-image: url('images/tokyo-arcade.jpg');
+    background-image: url('../images/tokyo-arcade.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -57,7 +61,7 @@ h1, h2, h3, h4 {
     min-width: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .description {
@@ -75,10 +79,18 @@ h1, h2, h3, h4 {
     line-height: 1.5;
   }
 
+  .description .btn {
+    background-color: #6610f2;
+    margin-top: 20px;
+  }
+  .description .btn:hover {
+    background-color: #3f0997;
+  }
+
   /*--- Memory game grid ---*/
 
   #memory-game.container-fluid {
-      margin-top: 100px;
+      margin-top: 50px;
       margin-bottom: 50px;
   }
 
@@ -99,10 +111,9 @@ img {
 
 /*--- Simon game board ---*/
 
-.container {
+#simon-game.container-fluid {
     text-align: center;
-    height: 100%;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-bottom: 50px;
 }
 
@@ -287,25 +298,25 @@ input#on.toggle {
 
   /*--- Contact form ---*/
 
-  .features .form-control,
-.features input {
+  .features .form-control {
     border-radius: 0;
 }
 .features .btn {
-  background-color: #9933CC;
-  border: 1px solid #9933CC;
-  color: #fff;
+  background-color: #6610f2;
   margin-top: 20px;
 }
 .features .btn:hover {
-  background-color: #333;
-  border: 1px solid #333;
+  background-color: #3f0997;
+}
+
+.feature-title {
+  color: #ffc107;
 }
 
 /*--- Footer ---*/
 
 .page-footer {
-    background-color: #222;
+    background-color: #333;
     color: #ccc;
     padding: 60px 0 30px;
     text-align: left;
@@ -339,4 +350,19 @@ input#on.toggle {
       margin: 0;
     }
   }
+
+  // Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
 
