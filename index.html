@@ -11,7 +11,7 @@
     <!-- CSS style -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- App Javascript -->
-    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/app.js"></script>
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -19,23 +19,6 @@
             emailjs.init("user_82QFa7hBZ0VpcOO1lOLOE");
         })();
     </script>
-    <!-- Audio files -->
-    <audio id="clip1">
-        <source src="audio/green.mp3">
-        </source>
-    </audio>
-    <audio id="clip2">
-        <source src="audio/red.mp3">
-        </source>
-    </audio>
-    <audio id="clip3">
-        <source src="audio/yellow.mp3">
-        </source>
-    </audio>
-    <audio id="clip4">
-        <source src="audio/blue.mp3">
-        </source>
-    </audio>
 </head>
 
 <body>
@@ -103,6 +86,19 @@
 </div>
 
     <!-- Simon game -->
+    <!-- Audio files -->
+    <audio id="clip1">
+        <source src="audio/green.mp3">
+    </audio>
+    <audio id="clip2">
+        <source src="audio/red.mp3">
+    </audio>
+    <audio id="clip3">
+        <source src="audio/yellow.mp3">
+    </audio>
+    <audio id="clip4">
+        <source src="audio/blue.mp3">
+    </audio>
     <section id="simon-game" class="container-fluid">
         <div>
             <h2>SIMON</h2>
@@ -163,18 +159,14 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <h3 class="feature-title">Get in Touch!</h3>
-                    <div class="form-group">
+                    <div class="center-form">
                         <form onsubmit="return sendMail(this);">
-                            <input type="text" class="form-control" placeholder="Name" name="">
+                            <input type="text" name="name" class="form-control" id="fullname" placeholder="Name" required/>
+                            <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Email" required/>
+                            <textarea rows="5" name="projectsummary" class="form-control" id="projectsummary" placeholder="Message" required></textarea>
+                            <button type="submit" class="btn btn-dark btn-lg">Message</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email Address" name="email">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="4"></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-dark btn-lg" value="Send" name="">
-                    </form>
                 </div>
             </div>
         </div>
