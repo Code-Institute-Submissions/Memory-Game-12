@@ -7,392 +7,451 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // MEMORY GAME
-document.addEventListener('DOMContentLoaded', () => {
     // Card options
-    const cardArray = [
+    const cardsArray = [
         {
-            name: 'orange-flower',
-            img: 'images/orange-flower.png' 
-        },
-        {
-            name: 'frog',
-            img: 'images/frog.png'
-        },
-        {
-            name: 'mushroom-green',
-            img: 'images/mushroom-green.png'
+            name: 'shell',
+            images: 'images/blueshell.png',
         },
         {
             name: 'star',
-            img: 'images/star.png'
+            images: 'images/star.png',
         },
         {
-            name: 'star-rainbow',
-            img: 'images/star-rainbow.png'
+            name: 'bobomb',
+            images: 'images/bobomb.png',
         },
         {
-            name: 'monster',
-            img: 'images/monster.png'
+            name: 'mario',
+            images: 'images/mario.png',
         },
         {
-            name: 'orange-flower',
-            img: 'images/orange-flower.png'
+            name: 'luigi',
+            images: 'images/luigi.png',
         },
         {
-            name: 'frog',
-            img: 'images/frog.png'
+            name: 'peach',
+            images: 'images/peach.png',
         },
         {
-            name: 'mushroom-green',
-            img: 'images/mushroom-green.png'
+            name: '1up',
+            images: 'images/1up.png',
         },
         {
-            name: 'star',
-            img: 'images/star.png'
+            name: 'mushroom',
+            images: 'images/mushroom.png',
         },
         {
-            name: 'star-rainbow',
-            img: 'images/star-rainbow.png'
+            name: 'thwomp',
+            images: 'images/thwomp.png',
         },
         {
-            name: 'monster',
-            img: 'images/monster.png'
-        }
-    ]
-    // Random selection of cards
-    cardArray.sort(() => 0.5 - Math.random())
+            name: 'bulletbill',
+            images: 'images/bulletbill.png',
+        },
+        {
+            name: 'coin',
+            images: 'images/coin.png',
+        },
+        {
+            name: 'goomba',
+            images: 'images/goomba.png',
+        },
+    ];
 
-    const grid = document.querySelector('.grid')
-    const resultDisplay = document.querySelector('#result')
-    var cardsChosen = []
-    var cardsChosenId = []
-    const cardsWon = []
+    const gameGrid = cardsArray
+        .concat(cardsArray)
+        .sort(() => 0.5 - Math.random());
 
-    // Create board
-    function createBoard() {
-        for (let i = 0; i < cardArray.length; i++) {
-            var card = document.createElement('img')
-            card.setAttribute('src', 'images/cover.png')
-            card.setAttribute('data-id', i)
-            card.addEventListener('click', flipCard)
-            grid.appendChild(card)
-        }
-    }
+    let firstGuess = '';
+    let secondGuess = '';
+    let count = 0;
+    let previousTarget = null;
+    let delay = 1200;
 
-    // Check for matches
-    function checkForMatch() {
-        var cards = document.querySelectorAll('img')
-        const optionOneId = cardsChosenId[0]
-        const optionTwoId = cardsChosenId[1]
-        // Conditions if player gets a match
-        if (cardsChosen[0] === cardsChosen[1]) {
-            Swal.fire(
-                'Good job!',
-                'You found a match!',
-                'success'
-              )
-            cards[optionOneId].setAttribute('src', 'images/white.png')
-            cards[optionTwoId].setAttribute('src', 'images/white.png')
-            cardsWon.push(cardsChosen)
-        } else {// Conditions if player doesn't get match
-            cards[optionOneId].setAttribute('src', 'images/cover.png')
-            cards[optionTwoId].setAttribute('src', 'images/cover.png')
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Sorry :( try again!',
-              })
-        } // Conditions if player match them all
-        cardsChosen = []
-        cardsChosenId = []
-        resultDisplay.textContent = cardsWon.length
-        if (cardsWon.length === cardArray.length / 2) {
-            resultDisplay.textContent = 'Congratulations! You found them all! :)'
-        }
-    }
+    const game = document.getElementById('game');
+    const grid = document.createElement('section');
+    grid.setAttribute('class', 'grid');
+    game.appendChild(grid);
 
-    // Flip cards
-    function flipCard() {
-        var cardId = this.getAttribute('data-id')
-        cardsChosen.push(cardArray[cardId].name)
-        cardsChosenId.push(cardId)
-        this.setAttribute('src', cardArray[cardId].img)
-        if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 500)
+    gameGrid.forEach(item => {
+        const { name, images } = item;
+
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.name = name;
+
+        const front = document.createElement('div');
+        front.classList.add('front');
+
+        const back = document.createElement('div');
+        back.classList.add('back');
+        back.style.backgroundImage = `url(${images})`;
+
+        grid.appendChild(card);
+        card.appendChild(front);
+        card.appendChild(back);
+    });
+
+    const match = () => {
+        const selected = document.querySelectorAll('.selected');
+        selected.forEach(card => {
+            card.classList.add('match');
+        });
+    };
+
+    const resetGuesses = () => {
+        firstGuess = '';
+        secondGuess = '';
+        count = 0;
+        previousTarget = null;
+
+        var selected = document.querySelectorAll('.selected');
+        selected.forEach(card => {
+            card.classList.remove('selected');
+        });
+    };
+
+    grid.addEventListener('click', event => {
+
+        const clicked = event.target;
+
+        if (
+            clicked.nodeName === 'SECTION' ||
+            clicked === previousTarget ||
+            clicked.parentNode.classList.contains('selected') ||
+            clicked.parentNode.classList.contains('match')
+        ) {
+            return;
         }
-    }
-    createBoard()
-})
+
+        if (count < 2) {
+            count++;
+            if (count === 1) {
+                firstGuess = clicked.parentNode.dataset.name;
+                console.log(firstGuess);
+                clicked.parentNode.classList.add('selected');
+            } else {
+                secondGuess = clicked.parentNode.dataset.name;
+                console.log(secondGuess);
+                clicked.parentNode.classList.add('selected');
+            }
+
+            if (firstGuess && secondGuess) {
+                if (firstGuess === secondGuess) {
+                    setTimeout(match, delay);
+                }
+                setTimeout(resetGuesses, delay);
+            }
+            previousTarget = clicked;
+        }
+
+    });
+//end of memory card game
 
 
 // SIMON GAME
-document.addEventListener('DOMContentLoaded', () => {
-// Board game controls most of the flow of the game
-let order = [];
-let playerOrder = [];
-let flash;
-let turn;
-let good;
-let compTurn;
-let intervalId;
-let strict = false;
-let noise = true;
-let on = false;
-let win;
+//Board game object, it controls most of the flow of the game
+const BoardGame = {
+    level: 0,
+    dificulty: 0,
+    HighLevel: 0,
+    isRunning: false,
+    //Set the conditions to start the game
+    start: () => {
+        if (BoardGame.isRunning == false) {
+            BoardGame.isRunning = true
+            UserExperience.ShowStart()
+            $('#reset').disabled = true
+            AppController.AIturn()
+        }
+    },
+    //Called after user's sequence is wrong
+    gameOver: () => {
+        Audio.Failure()
+        $('.color').css('pointer-events', 'none')
+        $('#board').addClass('failure')
+        $('#reset').disabled = false
 
-// Elements that user interacts with when playing the game
-const turnCounter = document.querySelector('#turn');
-const topLeft = document.querySelector('#top-left');
-const topRight = document.querySelector('#top-right');
-const bottomLeft = document.querySelector('#bottom-left');
-const bottomRight = document.querySelector('#bottom-right');
-const strictButton = document.querySelector('#strict');
-const onButton = document.querySelector('#on');
-const startButton = document.querySelector('#start');
+    },
+    //It sets all the coditions to zero except for high score,
+    //to start playing again
+    reset: function () {
+        $('#board').removeClass('failure')
+        Player.sequence = []
+        AI.sequence = []
+        Player.sequenceIndex = 0
+        BoardGame.level = 0
+        BoardGame.isRunning = false
+        UserExperience.ShowLevel()
 
-// Strict button option for higher dificulty
-strictButton.addEventListener('click', (event) => {
-    if (strictButton.checked == true) {
-        strict = true;
-    } else {
-        strict = false;
-    }
-});
+    },
+    //Called after user's sequence is correct,
+    //it resets some turn values and call the AI turn
+    nextTurn: function () {
+        Audio.Success()
+        UserExperience.ShowSuccess()
+        Player.sequenceIndex = 0
+        Player.sequence = []
+        BoardGame.level++
+        UserExperience.ShowLevel()
+        BoardGame.HighestLevel()
+        AppController.AIturn()
+    },
+    //It checks if the highest score has been beaten
+    HighestLevel: function () {
 
-// Power ON button to turn on the game board
-onButton.addEventListener('click', (event) => {
-    if (onButton.checked == true) {
-        on = true;
-        turnCounter.innerHTML = '-';
-    } else {
-        on = false;
-        turnCounter.innerHTML = '';
-        clearColor();
-        clearInterval(intervalId);
-    }
-});
-
-// START button for user to start sequence of the game
-startButton.addEventListener('click', (event) => {
-    if (on || win) {
-        play();
-    }
-});
-
-// Play function set conditions to start first round of the game
-function play() {
-    win = false;
-    order = [];
-    playerOrder = [];
-    flash = 0;
-    intervalId = 0;
-    turn = 1;
-    turnCounter.innerHTML = 1;
-    good = true;
-    for (let i = 0; i < 20; i++) {
-        order.push(Math.floor(Math.random() * 4) + 1);
-    }
-    compTurn = true;
-    intervalId = setInterval(gameTurn, 800);
-}
-
-// Function calls for computer sequence turn, flashing lights
-function gameTurn() {
-    on = false;
-
-    if (flash == turn) {
-        clearInterval(intervalId);
-        compTurn = false;
-        clearColor();
-        on = true;
-    }
-
-    if (compTurn) {
-        clearColor();
-        setTimeout(() => {
-            if (order[flash] == 1) one();
-            if (order[flash] == 2) two();
-            if (order[flash] == 3) three();
-            if (order[flash] == 4) four();
-            flash++;
-        }, 200);
-    }
-}
-
-// Set of functions in charge of playing audio for each color
-function one() {
-    if (noise) {
-        let audio = document.getElementById('clip1');
-        audio.play();
-    }
-    noise = true;
-    topLeft.style.backgroundColor = 'lightgreen';
-}
-
-function two() {
-    if (noise) {
-        let audio = document.getElementById('clip2');
-        audio.play();
-    }
-    noise = true;
-    topRight.style.backgroundColor = 'tomato';
-}
-
-function three() {
-    if (noise) {
-        let audio = document.getElementById('clip3');
-        audio.play();
-    }
-    noise = true;
-    bottomLeft.style.backgroundColor = 'yellow';
-}
-
-function four() {
-    if (noise) {
-        let audio = document.getElementById('clip4');
-        audio.play();
-    }
-    noise = true;
-    bottomRight.style.backgroundColor = 'lightskyblue';
-}
-
-// Function to clear colors after sequence
-function clearColor() {
-    topLeft.style.backgroundColor = 'darkgreen';
-    topRight.style.backgroundColor = 'darkred';
-    bottomLeft.style.backgroundColor = 'goldenrod';
-    bottomRight.style.backgroundColor = 'darkblue';
-}
-// Function to flash computer sequence colors
-function flashColor() {
-    topLeft.style.backgroundColor = 'lightgreen';
-    topRight.style.backgroundColor = 'tomato';
-    bottomLeft.style.backgroundColor = 'yellow';
-    bottomRight.style.backgroundColor = 'lightskyblue';
-}
-
-// Set of functions to check if the player is correct
-topLeft.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(1);
-        check();
-        one();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
+        if (BoardGame.level > BoardGame.HighLevel) {
+            BoardGame.HighLevel = BoardGame.level
+            AppController.ShowHighest(BoardGame.HighLevel)
         }
     }
+}
+
+//Object with the audio play functions
+const Audio = {
+    Success: () => {
+        document.getElementById('success-sound').play()
+    },
+    Red: () => {
+        document.getElementById('red-sound').play()
+    },
+    Green: () => {
+        document.getElementById('green-sound').play()
+    },
+    Blue: () => {
+        document.getElementById('blue-sound').play()
+    },
+    Yellow: () => {
+        document.getElementById('yellow-sound').play()
+    },
+    Failure: () => {
+        document.getElementById('failure-sound').play()
+    }
+}
+
+//Object with some information about the player
+const Player = {
+    sequence: [],
+    sequenceIndex: 0,
+    playerPick: function (numero) { //It storage the value of the player sequence in the array
+        Player.sequence.push(numero)
+        Player.sequenceIndex++
+        AppController.CheckSequence()//Call the function that checks if player move is correct
+    }
+}
+
+//Object with some AI information
+const AI = {
+    sequence: [],
+    sequenceIndex: 0,
+    //Randomly pick a Color and storage it into the AI array
+    AIpickColor: function () {
+        this.sequence.push(Math.floor(Math.random() * 4));
+        UserExperience.ShowAIonBoard(UserExperience.delay)
+        AppController.playerTurn()
+    }
+}
+
+//Object in charge of showing content on the screen (UX)
+const UserExperience = {
+    delay: 0,
+    //Show the AI sequence on the screen
+    //Show the player sequence on the screen
+    ShowLevel: function () {
+        $('#level').text(`${BoardGame.level.toString().padStart(2, '0')}`)
+    },
+    ShowAIonBoard: function (delay) {
+        let index = AI.sequenceIndex
+        for (let i = 0; i < AI.sequence.length; i++) {
+            if (AI.sequence[i] == 0) {
+                setTimeout(UserExperience.LightGreen, delay)
+            }
+            else if (AI.sequence[i] == 1) {
+                setTimeout(this.LightRed, delay)
+            }
+            else if (AI.sequence[i] == 2) {
+                setTimeout(this.LightBlue, delay)
+            }
+            else if (AI.sequence[i] == 3) {
+                setTimeout(this.LightYellow, delay)
+            }
+            delay += 500
+        }
+
+    },
+    //Set of functions that controls the color higlights on the screen
+    LightGreen: function () {
+        setTimeout(function () {
+            $('#green').addClass('greenClicked')
+            Audio.Green()
+        }, 1300)
+        setTimeout(function () {
+            $('#green').removeClass('greenClicked')
+        }, 1600)
+
+    },
+    LightRed: function () {
+        setTimeout(function () {
+            $('#red').addClass('redClicked')
+            Audio.Red()
+        }, 1300)
+        setTimeout(function () {
+            $('#red').removeClass('redClicked')
+        }, 1600)
+
+    },
+    LightBlue: function () {
+        setTimeout(function () {
+            $('#blue').addClass('blueClicked')
+            Audio.Blue()
+        }, 1300)
+        setTimeout(function () {
+            $('#blue').removeClass('blueClicked')
+        }, 1600)
+
+    },
+    LightYellow: function () {
+        setTimeout(function () {
+            $('#yellow').addClass('yellowClicked')
+            Audio.Yellow()
+        }, 1300)
+        setTimeout(function () {
+            $('#yellow').removeClass('yellowClicked')
+        }, 1600)
+    },
+    //end of set
+
+    //Function that controls the white lights after game starts
+    ShowStart: function () {
+
+        $('#green').addClass('start')
+
+        setTimeout(function () {
+            $('#green').removeClass('start')
+        }, 25)
+
+        setTimeout(function () {
+            $('#red').addClass('start')
+        }, 50)
+        setTimeout(function () {
+            $('#red').removeClass('start')
+        }, 75)
+
+        setTimeout(function () {
+            $('#yellow').addClass('start')
+        }, 100)
+        setTimeout(function () {
+            $('#yellow').removeClass('start')
+        }, 125)
+
+        setTimeout(function () {
+            $('#blue').addClass('start')
+        }, 250)
+        setTimeout(function () {
+            $('#blue').removeClass('start')
+        }, 300)
+
+        setTimeout(function () {
+            $('#green').addClass('start')
+        }, 325)
+
+        setTimeout(function () {
+            $('#green').removeClass('start')
+        }, 350)
+
+        setTimeout(function () {
+            $('#red').addClass('start')
+        }, 375)
+        setTimeout(function () {
+            $('#red').removeClass('start')
+        }, 400)
+
+        setTimeout(function () {
+            $('#yellow').addClass('start')
+        }, 425)
+        setTimeout(function () {
+            $('#yellow').removeClass('start')
+        }, 450)
+
+        setTimeout(function () {
+            $('#blue').addClass('start')
+        }, 475)
+        setTimeout(function () {
+            $('#blue').removeClass('start')
+        }, 500)
+    },
+    ShowSuccess: function () {
+        $('#board').addClass('success')
+
+        setTimeout(function () {
+            $('#board').removeClass('success')
+        }, 1000)
+    }
+}
+//end of function
+
+//Object in charge of some game functionalities
+const AppController = {
+
+    playerTurn: function () { //Set the pointer events to auto on player turn, for picking colors
+        $('.color').css('pointer-events', 'auto')
+
+    },
+    AIturn: function () {// Execute AI turn
+        AI.AIpickColor()
+    },
+    CheckSequence: function () { //It checks if user match AI's sequence
+        let index = Player.sequenceIndex - 1
+        const playerSeq = Player.sequence
+        const AIseq = AI.sequence
+
+        if (playerSeq[index] !== AIseq[index]) {
+            BoardGame.gameOver()
+        }
+        if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
+            setTimeout(BoardGame.nextTurn, 600)
+        }
+    },
+    ShowHighest: (score) => {
+        $('#highest-level').text(`${score.toString().padStart(2, '0')}`)
+    }
+
+}
+
+//Set of functions on click
+$('#start').click(function () {//Start the game
+    BoardGame.start()
 })
 
-topRight.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(2);
-        check();
-        two();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
+$('#reset').click(function () {//Reset the game
+    BoardGame.reset()
 })
 
-bottomLeft.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(3);
-        check();
-        three();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
+//Player picker set of functions
+$('#green').click(function () {
+    Audio.Green()
+    Player.playerPick(0)
 })
 
-bottomRight.addEventListener('click', (event) => {
-    if (on) {
-        playerOrder.push(4);
-        check();
-        four();
-        if (!win) {
-            setTimeout(() => {
-                clearColor();
-            }, 300);
-        }
-    }
+$('#red').click(function () {
+    Audio.Red()
+    Player.playerPick(1)
 })
 
-// Function check if player is correct or incorrect when following the sequence as the computer
-function check() {
-    if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
-        good = false;
-
-        if (playerOrder.length == 20 && good) {
-            winGame();
-        }
-
-        if (good == false) {
-            flashColor();
-            turnCounter.innerHTML = 'NO!';
-            setTimeout(() => {
-                turnCounter.innerHTML = turn;
-                clearColor();
-
-                // If playing strict this functions will re-start the game if player got something wrong
-                if (strict) {
-                    play();
-                } else {
-                    compTurn = true;
-                    flash = 0;
-                    playerOrder = [];
-                    good = true;
-                    intervalId = setInterval(gameTurn, 800);
-                }
-            }, 800);
-            noise = false;
-        }
-
-        // Set confitions if player has correct sequence
-        if (turn == playerOrder.length && good && !win) {
-            turn++;
-            playerOrder = [];
-            compTurn = true;
-            flash = 0;
-            turnCounter.innerHTML = turn;
-            intervalId = setInterval(gameTurn, 800)
-        }
-    }
-    // Condition if player follow sequence correctly and win the game
-    function winGame() {
-        flashColor();
-        turnCounter.innerHTML = 'WIN!';
-        on = false;
-        win = true;
-        
-    }
-
+$('#blue').click(function () {
+    Audio.Blue()
+    Player.playerPick(2)
 })
+
+$('#yellow').click(function () {
+    Audio.Yellow()
+    Player.playerPick(3)
+})
+
+//end of Click functions
 
 // Function in the navbar which refresh the games to start over
 function refreshPage() {
-    window.location.reload()
+    window.location.reload();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

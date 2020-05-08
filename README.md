@@ -91,6 +91,35 @@ Various methods of testing have been performed to ensure the best possible user 
 Compatibility
 Known issues
 
+## Issue List
+
+
+
+  | Issue  |                 Description                     |       Solution                      |  
+  | ------ |:-----------------------------------------------:|:-----------------------------------:|
+  |   1    |Attempted to connect dashboard directly to API but data proving unmanageable|Downloaded .csv file instead|
+  |   2    |Unable to download export whole dataset due to issue with website |downloaded each year separately|
+  |   3    |Issues with uniformity of the .csv data (e.g. spellings and capitalisation) |Amended these issues directly in .csv file|
+  |   4    |Composite chart , Stacked bar chart and Bar graph not scaling correctly on smaller devices |Used viewbox resize to scale correctly |
+  |   5    |Dates on Composite Chart X-axis displaying incorrectly (e.g. 1,985)|Function added to bottom of `show_country_year`  to correct this |
+  |   6    |Attempted to use Age Range function that would separate the ages Pie Chart into ranges |This did not connect to other charts. Added Age range column to .csv file |
+  |   7    |Queue, Crossfilter and and DC.js showing as ‘Undefined’ in main.js tab | `/*global varname*/` added to remove undefined variable errors |
+  |   8    |Header image and title took up too much space in responsive views | Changed display to none in media query below tablet resolution |
+  |   9    |”Next” and “Last” buttons did not work on Table |Event listener added to these buttons to globally rectify this |
+  |   10   |Explorer displaying the charts which use viewbox resizing too small |Decided to leave this, as browser being phased out and rarely used |
+  |   11   |Second intro paragraph did not fit on tablet size and was left in row alone | Removed from tablet view using media query |
+  |   12   |Stacked bar chart did not read well when using percentages to diplay types of attacks that were fatal |Opted to use actual count as this was clearer|
+  |   13   |Table not scaling correctly on smaller devices |Used media query to remove table from smaller devices |
+  |   14   |Needed to validate CSS for debugging purposes | Utilised jigsaw.W3 CSS Validator (zero errors) |
+  |   15   |Needed to validate JavaScript for debugging purposes | Utilised jshint.com (no errors) |
+  |   16   |Needed to validate HTML for debugging purposes | Utilised W3 Markup Validation Service (1 warning) |
+  |   17   |HTML Validation warning "Section lacks heading" | This warning can be ignored as does not affect code |
+  |   18   |X-axis titles on Activities bar graph not displaying correctly in horizontal view |Used `text-anchor: end !important` in CSS to angle text |
+  |   19   |Data in .csv file was causing more columns in graphs for the same variable (e.g. Body Boarding and Boogie Boarding) | Amended to .cvs variable names to make more uniform |
+  |   20   |Header `Refresh Charts` button was not positioning correctly in Windows Edge | Used `float: inherit` in CSS to fix |
+  |   21   |Is HTML semantic and self explanatory  | Added further comments to index.html file |
+  |   22   |Is main.js self explanatory  | Added further comments to main.js file |
+
 ## Deployment
 
 * To deploy the project to Github repository the following steps were taken:

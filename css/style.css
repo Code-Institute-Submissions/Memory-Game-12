@@ -90,189 +90,378 @@ h1, h2, h3, h4 {
 
   /*--- Memory game grid ---*/
 
-  #memory-game.container-fluid {
-      margin-top: 50px;
-      margin-bottom: 50px;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
-
+  
   .grid {
-    border-color: lightseagreen;
+    max-width: 960px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 300px;
-    margin: auto;
-    margin-top: 20px;
-}
-
-img {
-    width: 100px;
-    height: 100px;
-}
+    justify-content: space-evenly;
+  }
+  
+  .card {
+    position: relative;
+    transition: all .4s linear;
+    transform-style: preserve-3d;
+    margin: 5px;
+  }
+  
+  .card,
+  .back,
+  .front {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .back,
+  .front {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  
+  .front {
+    z-index: 2;
+    background: #FAB942 url('../images//question.gif') no-repeat center center / contain;
+  }
+  
+  .back {
+    transform: rotateY(180deg);
+    background-color: #6589F9;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .selected {
+    transform: rotateY(180deg);
+  }
+  
+  .match .front {
+    background: #6589F9 !important;
+  }
 
 /*--- Simon game board ---*/
 
-#simon-game.container-fluid {
-    text-align: center;
-    margin-top: 100px;
-    margin-bottom: 50px;
+#board {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.toggle {
-    margin-top: 28px;
-    margin-left: 43px;
+.color {
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  pointer-events: none;
 }
 
-input#strict.toggle {
-    margin-left: 71px;
+#green {
+  background-color: green;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  border-radius: 100% 0 0 0;
 }
 
-input#on.toggle {
-    margin-left: 25px;
+#green:active {
+  background: radial-gradient(ellipse at center, #d2ff52 0%, #91e842 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+#red {
+  background-color: #c30000;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  border-radius: 0 100% 0 0;
+}
+
+#red:active {
+  background: radial-gradient(ellipse at center, #ff1a00 0%, #ff1a00 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+#blue {
+  background-color: blue;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  border-radius: 0 0 0 100%;
+}
+
+#blue:active {
+  background: radial-gradient(ellipse at center, #499bea 0%, #207ce5 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+#yellow {
+  background-color: #ffcc00;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border-radius: 0 0 100% 0;
+}
+
+#yellow:active {
+  background: radial-gradient(ellipse at center, #ffff88 0%, #ffff88 100%);
+  box-shadow: inset 0 0 30px #000000;
 }
 
 .button {
-    font-size: 1.5em;
-    background-color: lightgrey;
-    margin-top: 25px;
+  width: 25px;
+  height: 25px;
+  border: solid 2px black;
+  border-radius: 100%;
+  box-shadow: inset 0 0 2px #000000;
+  font-size: 3em;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-#switches {
-    position: absolute;
-    margin-left: 34px;
+#start {
+  background-color: red;
 }
 
-.text1 {
-    position: absolute;
-    margin-left: 43px;
-    margin-top: 55px;
-    font-size: 16px;
+.button:active {
+  box-shadow: inset 0 0 5px #000000;
 }
 
-.text1 span:last-child {
-    padding-left: 50px;
+#reset {
+  background-color: yellow;
 }
 
-.text2 {
-    position: absolute;
-    margin-left: 93px;
-    margin-top: 133px;
-    font-size: 14px;
+.button:focus {
+  outline: none;
 }
 
-#turn {
-    position: absolute;
-    background: #330000;
-    color: red;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    height: 30px;
+.greenClicked {
+  background: radial-gradient(ellipse at center, #d2ff52 0%, #91e842 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+.redClicked {
+  background: radial-gradient(ellipse at center, #ff1a00 0%, #ff1a00 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+.blueClicked {
+  background: radial-gradient(ellipse at center, #499bea 0%, #207ce5 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+.yellowClicked {
+  background: radial-gradient(ellipse at center, #ffff88 0%, #ffff88 100%);
+  box-shadow: inset 0 0 30px #000000;
+}
+
+#center-board {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  left: 25%;
+  top: 25%;
+  border-radius: 100%;
+  border: solid 1em;
+  box-sizing: border-box;
+  background: silver;
+}
+
+#center-board h1 {
+  font-size: 3.5em;
+}
+
+.row {
+  display: flex;
+  width: 55%;
+  justify-content: space-between;
+  padding: 3% 0;
+}
+
+.button-tag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  color: lightgreen;
+  background-color: black;
+  padding: 5px 5px 5px 10px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  letter-spacing: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.start {
+  background: radial-gradient(ellipse at center, white 0%, white 100%);
+  box-shadow: inset 0 0 0 #000000;
+}
+
+.success {
+  filter: drop-shadow(0 0 80px green);
+}
+
+.failure {
+  filter: drop-shadow(0 0 80px red);
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: all 1s linear;
+  display: none;
+}
+
+.information {
+  color: white;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 600px;
+  line-height: 1.2;
+  text-align: justify;
+}
+
+.information h2 {
+  font-size: 3.1em;
+  padding-bottom: 5%;
+  text-shadow: 0.5px 0.5px grey;
+}
+
+.information li {
+  font-size: 1.3em;
+  padding: 2% 0;
+  text-shadow: 0.5px 0.5px grey;
+}
+
+.information ol {
+  list-style: decimal;
+}
+
+@keyframes colors {
+  0% {
+    background: #c30000;
+  }
+  25% {
+    background: #ffcc00;
+  }
+  50% {
+    background: blue;
+  }
+  100% {
+    background: green;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main {
+    height: 90%;
+  }
+  .information {
+    display: none;
+  }
+  #board {
+    width: 90vw;
+    height: 100%;
+    grid-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #board .color {
+    width: 100%;
+    height: 120px;
+    border-radius: 0;
+  }
+  #center-board {
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+  }
+  .button {
     width: 50px;
-    margin-left: 90px;
-    margin-top: 100px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 30px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+  .button-tag p {
+    font-size: 1em;
+  }
 }
 
-#outer-circle {
-    background: #385a94;
-    border-radius: 50%;
-    height: 500px;
-    width: 500px;
-    position: relative;
-    border-style: solid;
-    border-width: 10px;
-    margin: auto;
-    margin-top: 50px;
+@media (min-width: 575.98px) and (max-width: 825px) {
+  .information {
+    display: none;
+  }
+  #board {
+    width: 90vw;
+    height: 90vh;
+    grid-gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #board .color {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  #center-board {
+    position: static;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
+  .button {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+  .button-tag p {
+    font-size: 1em;
+  }
+  .row {
+    width: 70%;
+  }
+  .success {
+    filter: drop-shadow(0 0 100px green);
+  }
+  .failure {
+    filter: drop-shadow(0 0 100px red);
+  }
 }
 
-#top-left {
-    position: absolute;
-    height: 250px;
-    width: 250px;
-    border-radius: 250px 0 0 0;
-    -moz-border-radius:250px 0 0 0;
-    -webkit-border-radius: 250px 0 0 0;
-    background: darkgreen;
-    top: 50%;
-    left: 50%;
-    margin: -250px 0px 0px -250px;
-    border-style: solid;
-    border-width: 5px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-#top-right {
-    position: absolute;
-    height: 250px;
-    width: 250px;
-    border-radius: 0 250px 0 0;
-    -moz-border-radius: 0 250px 0 0;
-    -webkit-border-radius: 0 250px 0 0;
-    background: darkred;
-    top: 50%;
-    left: 50%;
-    margin: -250px 0px 0px 0px;
-    border-style: solid;
-    border-width: 5px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-#bottom-left {
-    position: absolute;
-    height: 250px;
-    width: 250px;
-    border-radius: 0 0 0 250px;
-    -moz-border-radius: 0 0 0 250px;
-    -webkit-border-radius: 0 0 0 250px;
-    background: goldenrod;
-    top: 50%;
-    left: 50%;
-    margin: 0px -250px 0px -250px;
-    border-style: solid;
-    border-width: 5px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-#bottom-right {
-    position: absolute;
-    height: 250px;
-    width: 250px;
-    border-radius: 0 0 250px 0;
-    -moz-border-radius: 0 0 250px 0;
-    -webkit-border-radius: 0 0 250px 0;
-    background: darkblue;
-    top: 50%;
-    left: 50%;
-    margin: 0px 0px -250px 0px;
-    border-style: solid;
-    border-width: 5px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-#inner-circle {
-    position: absolute;
-    height: 250px;
-    width: 250px;
-    background: darkgray;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    margin: -125px 0px 0px -125px;
-    border-style: solid;
-    border-width: 10px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+@media (min-width: 751px) and (max-width: 1000px) {
+  .information {
+    display: none;
+  }
 }
 
 /*--- 3 colums information ---*/
