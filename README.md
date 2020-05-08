@@ -1,9 +1,8 @@
 # MS2 Project for Code Institute 2020
 
 ## Overview
-A retro-style game app build using JavaScript, HTML and CSS
 
-### Live Demo: (https://gisellenessi.github.io/Memory-Game/)
+### [Live Demo:](https://gisellenessi.github.io/Memory-Game/)
 
 A retro-style game app build using JavaScript, HTML and CSS
 
@@ -46,6 +45,7 @@ Design and layout are mainly focused on fun and simplicity.
 Bootstrap was used as my framework of choice due to its flexibility in responsiveness and its modern look and feel.
 
 ### Colour palette
+![Color](images/color-palette.png)
 (images/color-palette.png)
 
 The colour palette was chosen to create a fun and nostalgic atmosphere. For this I used bright, neon colours and a dark mode visual application to simulate real arcade environments full of colours and bright lights.
@@ -60,9 +60,9 @@ This website is fully responsive to all screen sizes and devices, making the app
 
 ### Wireframes
 
-- [Games](images/games.JPG)
-- [Mobile](images/mobile.JPG)
-- [Desktop](images/Desktop.JPG)
+- [Games](images/wireframes/games.JPG)
+- [Mobile](images/wireframes/mobile.JPG)
+- [Desktop](images/wireframes/Desktop.JPG)
 
 ## Features
 ### Features in use 
@@ -87,22 +87,24 @@ This website is fully responsive to all screen sizes and devices, making the app
 
 For the development of this project I built the two games using slightly different approaches towards the code, to have two different learning outcomes.
 
-- 1st game - Memory Card Game: Built with plain Javascript syntax and data-types to insert and manipulate elements in the page. Using my knowledge of Javascript syntax and data-types. Putting ES6 and some basic DOM concepts into practice.
+- **1st Game** - Memory Card Game: Built with plain Javascript syntax and data-types to insert and manipulate elements in the page. Using my knowledge of Javascript syntax and data-types. Putting ES6 and some basic DOM concepts into practice.
 
-- 2nd game - Simon: Built using Javascripts and jQuery. For this game I decided to use the jQuery library to simplify some tasks in the code. I also used DOM manipulation as this game is a bit more complex than the previous one and requires different sequences of flashing colours.
+- **2nd Game** - Simon: Built using Javascripts and jQuery. For this game I decided to use the jQuery library to simplify some tasks in the code. I also used DOM manipulation as this game is a bit more complex than the previous one and requires different sequences of flashing colours.
+
+- **Branching in github**: From the master branch I created a new branch by typing git checkout -b simon-game-feature master on my terminal. I created the simon game feature on this new branch and then succesfuly merge to master branch using git merge master  on my terminal.
 
 This languages, frameworks, libraries and other tools utilised for building this retro gaming app are:
 
-- HTML5 - The gaming app uses HTML5 as the fundamental basis for building the app
-- CSS3 - The game app uses CSS3 for the styling of all elements within the website. It is linked from the page to the style.css file and is used for all content, including colour pallets, navbar, background, images, title, fonts, etc.
-- Bootstrap 4.1.3 - The Bootstrap framework has been used to implement the layout of the game app and also used to ensure responsiveness and mobile-first design.
-- JavaScript - The game app uses Javascript to provide dynamic interactivity for users
-- jQuery - The game app uses jQuery to simplify some tasks, such as DOM manipulation
-- Email.js - To send emails through the contact form
-- Fontawesome - The game uses fontawesome for all icons
-- VScode - Visual Studio Code was my IDE of choice for this project
-- Github - Has been used for version control of the code using Git functions and remote storage of the project
-- Google fonts - The game app uses Google fonts for all project fonts
+- **HTML5** - The gaming app uses HTML5 as the fundamental basis for building the app
+- **CSS3** - The game app uses CSS3 for the styling of all elements within the website. It is linked from the page to the style.css file and is used for all content, including colour pallets, navbar, background, images, title, fonts, etc.
+- **Bootstrap 4.1.3** - The Bootstrap framework has been used to implement the layout of the game app and also used to ensure responsiveness and mobile-first design.
+- **JavaScript** - The game app uses Javascript to provide dynamic interactivity for users
+- **jQuery** - The game app uses jQuery to simplify some tasks, such as DOM manipulation
+- **Email.js** - To send emails through the contact form
+- **Fontawesome** - The game uses fontawesome for all icons
+- **VScode** - Visual Studio Code was my IDE of choice for this project
+- **Github** - Has been used for version control of the code using Git functions and remote storage of the project
+- **Google fonts** - The game app uses Google fonts for all project fonts
 
 ## Testing
 ### Validators
