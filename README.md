@@ -2,7 +2,7 @@
 
 ## Overview
 
-### [Live Demo:](https://gisellenessi.github.io/Memory-Game/)
+### [Live Demo](https://gisellenessi.github.io/Memory-Game/)
 
 A retro-style game app build using JavaScript, HTML and CSS
 
@@ -45,8 +45,7 @@ Design and layout are mainly focused on fun and simplicity.
 Bootstrap was used as my framework of choice due to its flexibility in responsiveness and its modern look and feel.
 
 ### Colour palette
-![Color](images/color-palette.png)
-(images/color-palette.png)
+![Color](images/palette.png)
 
 The colour palette was chosen to create a fun and nostalgic atmosphere. For this I used bright, neon colours and a dark mode visual application to simulate real arcade environments full of colours and bright lights.
 
@@ -91,7 +90,7 @@ For the development of this project I built the two games using slightly differe
 
 - **2nd Game** - Simon: Built using Javascripts and jQuery. For this game I decided to use the jQuery library to simplify some tasks in the code. I also used DOM manipulation as this game is a bit more complex than the previous one and requires different sequences of flashing colours.
 
-- **Branching in github**: From the master branch I created a new branch by typing git checkout -b simon-game-feature master on my terminal. I created the simon game feature on this new branch and then succesfuly merge to master branch using git merge master  on my terminal.
+- **Other learnings include branching in Github**: From the master branch I created a new branch by typing 'git checkout -b simon-game-feature master' on my terminal. I then worked on that new branch to create the Simon game feature, once finished I successfully merged to master branch typing 'git merge master' on my terminal.
 
 This languages, frameworks, libraries and other tools utilised for building this retro gaming app are:
 
