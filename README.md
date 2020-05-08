@@ -38,7 +38,10 @@ In order to make the user experience as seamless as possible as well as being fu
 
 ## Design
 
-Design and layout are mainly focused on fun and simplicity. 
+The design and layout are mainly focused on fun and simplicity. 
+Bootstrap has been used to guarantee responsiveness. 
+This game is primarily designed for use on desktop, but mobile-view has been applied where possible for a better user experience.
+ 
 
 ### Framework
 
@@ -73,7 +76,6 @@ This website is fully responsive to all screen sizes and devices, making the app
 - Audio: The Simon game has sound implemented when the user is playing, to indicate game sequence, success or failure.
 - Contact form: email delivery is working and utilises a pop-up alert to let users know of success or error when sending.
 - Back to top button: in the footer, back to top button for an easy navigation back to the header.
-
 
 ### To be implemented
 
