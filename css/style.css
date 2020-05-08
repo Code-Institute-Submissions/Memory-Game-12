@@ -3,7 +3,7 @@
 /*--- Smooth scrolling behavior for navigation ---*/
 html {
     scroll-behavior: smooth;
-  }
+}
 
 body {
     padding: 0;
@@ -172,7 +172,7 @@ h2 {
 }
 
 #green {
-  background-color: green;
+  background-color: #28a745;
   grid-column: 1/2;
   grid-row: 1/2;
   border-radius: 100% 0 0 0;
@@ -312,16 +312,16 @@ h2 {
 }
 
 .start {
-  background: radial-gradient(ellipse at center, white 0%, white 100%);
+  background: radial-gradient(ellipse at center, #fff 0%, #fff 100%);
   box-shadow: inset 0 0 0 #000000;
 }
 
 .success {
-  filter: drop-shadow(0 0 80px green);
+  filter: drop-shadow(0 0 80px #28a745);
 }
 
 .failure {
-  filter: drop-shadow(0 0 80px red);
+  filter: drop-shadow(0 0 80px #ff1a00);
 }
 
 .main {
@@ -342,18 +342,26 @@ h2 {
     background: #ffcc00;
   }
   50% {
-    background: blue;
+    background: #007bff;
   }
   100% {
-    background: green;
+    background: #28a745;
   }
 }
   /*--- Footer ---*/
+
+  .footer {
+    
+    color: #ccc;
+    padding: 60px 0 30px;
+    text-align: left;
+  }
 
 .features {
   margin: 4em auto;
   padding: 1em;
   position: relative;
+  background-color: #313131;
 }
 .feature-title {
   font-size: 1.3rem;
@@ -361,15 +369,10 @@ h2 {
   margin-bottom: 20px;
 }
 
-.page-footer {
-  background-color: #333;
-  color: #ccc;
-  padding: 60px 0 30px;
-  text-align: left;
-}
 .footer-copyright {
   color: #555;
   padding: 10px 0;
+  margin-bottom: 50px;
 }
 
   /*--- Contact form ---*/
@@ -484,9 +487,9 @@ h2 {
       width: 70%;
     }
     .success {
-      filter: drop-shadow(0 0 100px green);
+      filter: drop-shadow(0 0 100px #28a745);
     }
     .failure {
-      filter: drop-shadow(0 0 100px red);
+      filter: drop-shadow(0 0 100px #ff1a00);
     }
   }
