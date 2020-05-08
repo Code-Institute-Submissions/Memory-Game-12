@@ -58,22 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
             images: 'images/goomba.png',
         },
     ];
-
+// Duplicate array to create a match 
     const gameGrid = cardsArray
         .concat(cardsArray)
-        .sort(() => 0.5 - Math.random());
+        .sort(() => 0.5 - Math.random()); // Random selection of cards on each load
 
     let firstGuess = '';
     let secondGuess = '';
     let count = 0;
     let previousTarget = null;
     let delay = 1200;
-
+// Get div with an id of root
     const game = document.getElementById('game');
-    const grid = document.createElement('section');
+    const grid = document.createElement('section'); // Create a section with a class of grid
     grid.setAttribute('class', 'grid');
     game.appendChild(grid);
-
+// For each item in the cards array
     gameGrid.forEach(item => {
         const { name, images } = item;
 
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(front);
         card.appendChild(back);
     });
-
+// Functions that match elements when called
     const match = () => {
         const selected = document.querySelectorAll('.selected');
         selected.forEach(card => {
             card.classList.add('match');
         });
     };
-
+// Reset user guesses and remove selected
     const resetGuesses = () => {
         firstGuess = '';
         secondGuess = '';
@@ -111,9 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.remove('selected');
         });
     };
-
+// Function will be call if both guesses match
     grid.addEventListener('click', event => {
-
         const clicked = event.target;
 
         if (
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ) {
             return;
         }
-
+// Counts to two and then adds two cards
         if (count < 2) {
             count++;
             if (count === 1) {
@@ -198,7 +197,7 @@ const BoardGame = {
         BoardGame.HighestLevel()
         AppController.AIturn()
     },
-    //It checks if the highest score has been beaten
+    //Checks if the highest score has been beaten
     HighestLevel: function () {
 
         if (BoardGame.level > BoardGame.HighLevel) {
@@ -253,7 +252,7 @@ const AI = {
     }
 }
 
-//Object in charge of showing content on the screen (UX)
+//Object in charge of showing content on the screen
 const UserExperience = {
     delay: 0,
     //Show the AI sequence on the screen
@@ -320,7 +319,7 @@ const UserExperience = {
             $('#yellow').removeClass('yellowClicked')
         }, 1600)
     },
-    //end of set
+    
 
     //Function that controls the white lights after game starts
     ShowStart: function () {
@@ -389,7 +388,7 @@ const UserExperience = {
         }, 1000)
     }
 }
-//end of function
+
 
 //Object in charge of some game functionalities
 const AppController = {
@@ -449,9 +448,7 @@ $('#yellow').click(function () {
     Player.playerPick(3)
 })
 
-//end of Click functions
-
 // Function in the navbar which refresh the games to start over
 function refreshPage() {
     window.location.reload();
-}
+};
