@@ -42,7 +42,7 @@
                     <a class="nav-link" href="#memory-game">Memory Card</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#simon-game">Simon</a>
+                    <a class="nav-link" href="#simon">Simon</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#footer-contact">Contact</a>
@@ -85,7 +85,7 @@
 
     <!-- Simon game -->
     <section class="main"></section>
-    <h2>PLAY SIMON</h2>
+    <h2  id="simon">PLAY SIMON</h2>
    <!-- Game board -->
    <div id="board">
     <div id="green" class="color"></div>
@@ -115,60 +115,60 @@
         </div>
     </div>
 </div>
-
+</section>
         <div class="card-footer">
             <h4>Rules:</h4>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-dark">Start the game by clicking on any of the cards</li>
-                <li class="list-group-item list-group-item-dark">To win find all the matches</li>
-                <li class="list-group-item list-group-item-dark">Keep trying until you find the all</li>
-                <li class="list-group-item list-group-item-dark">Click refresh games on the navbar to start again
+                <li class="list-group-item list-group-item-dark">Press the START button. Simon will give you the first signal. Repeat the signal by pressing the same
+                    color</li>
+                <li class="list-group-item list-group-item-dark">Simon will duplicate the signal and add one. Repeat these two signal by pressing the same color lenses,
+                    in order</li>
+                <li class="list-group-item list-group-item-dark">Simon will duplicate these first two signals and add one</li>
+                <li class="list-group-item list-group-item-dark">Continue playing as long as you can repeat each sequence of signals correctly
                 </li>
                 <li class="list-group-item list-group-item-dark">Enjoy!</li>
             </ul>
         </div>
-    </section>
-
-</section>
-    <!-- Page footer, information and get intouch feature -->
-    <footer class="page-footer" id="footer-contact">
-        <div class="container features">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h3 class="feature-title">FUN</h3>
-                    <i class="fas fa-gamepad fa-3x"></i>
-                    <p>Playing memory games is fun for kids and adults</p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h3 class="feature-title">BRAIN</h3>
-                    <i class="far fa-smile-wink fa-3x"></i>
-                    <p>Playing memory games is good for your brain muscle</p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h3 class="feature-title">Get in Touch!</h3>
-                    <div class="center-form">
-                        <form onsubmit="return sendMail(this);">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" id="fullname" placeholder="Name"
-                                    required />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="emailaddress" class="form-control" id="emailaddress"
-                                    placeholder="Email" required />
-                            </div>
-                            <div class="form-group">
-                                <textarea rows="5" name="projectsummary" class="form-control" id="gameapp"
-                                    placeholder="Message" required></textarea>
-                                <button type="submit" class="btn btn-dark btn-lg">Send</button>
-                            </div>
-                        </form>
+    
+        <!-- Page footer, information and get intouch feature -->
+        
+            <div class="container features" id="footer-contact">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="feature-title">FUN</h3>
+                        <i class="fas fa-gamepad fa-3x"></i>
+                        <p>Playing memory games is fun for kids and adults</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="feature-title">BRAIN</h3>
+                        <i class="far fa-smile-wink fa-3x"></i>
+                        <p>Playing memory games is good for your brain muscle</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="feature-title">Get in Touch!</h3>
+                        <div class="center-form">
+                            <form onsubmit="return sendMail(this);">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="fullname" placeholder="Name"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="emailaddress" class="form-control" id="emailaddress"
+                                        placeholder="Email" required />
+                                </div>
+                                <div class="form-group">
+                                    <textarea rows="5" name="projectsummary" class="form-control" id="gameapp"
+                                        placeholder="Message" required></textarea>
+                                    <button type="submit" class="btn btn-dark btn-lg">Send</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-copyright text-center">© 2020 Copyright: Created by <a
-                href="https://github.com/GiselleNessi">Giselle Chacon</a></div>
-    </footer>
+            <div class="footer-copyright text-center">© 2020 Copyright: Created by <a
+                    href="https://github.com/GiselleNessi">Giselle Chacon</a></div>
+        </footer>
 
     <!-- Scripts, Fontawesome, Bootstrap, Sweet alert JS, Email.JS -->
     <!-- App Javascript -->
