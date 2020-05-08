@@ -348,10 +348,7 @@ h2 {
     background: green;
   }
 }
-
-
-
-/*--- 3 colums information ---*/
+  /*--- Footer ---*/
 
 .features {
   margin: 4em auto;
@@ -363,8 +360,6 @@ h2 {
   font-weight: 700;
   margin-bottom: 20px;
 }
-
-  /*--- Footer ---*/
 
 .page-footer {
   background-color: #333;

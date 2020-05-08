@@ -93,13 +93,11 @@ Known issues
 
 ## Issue List
 
-
-
   | Issue  |                 Description                     |       Solution                      |  
   | ------ |:-----------------------------------------------:|:-----------------------------------:|
-  |   1    |Attempted to make both games mobile friendly but was unmanageable|Made for bigger screens, alert the user of this|
-  |   2    |Unable to download export whole dataset due to issue with website |downloaded each year separately|
-  |   3    |Issues with uniformity of the .csv data (e.g. spellings and capitalisation) |Amended these issues directly in .csv file|
+  |   1    |Attempted to make both games mobile friendly but was unmanageable at this time|Made for bigger screens, alert the user of this|
+  |   2    |Navigation works as expected, scrolling was too agressive |Applied scroll-behavior: smooth; on css and fixed the issue|
+  |   3    |Issues when flip card on the memory card game, showing only half the image|Fixed with trasform option in CSS but issues comes back but works in firefox|
   |   4    |Composite chart , Stacked bar chart and Bar graph not scaling correctly on smaller devices |Used viewbox resize to scale correctly |
   |   5    |Dates on Composite Chart X-axis displaying incorrectly (e.g. 1,985)|Function added to bottom of `show_country_year`  to correct this |
   |   6    |Attempted to use Age Range function that would separate the ages Pie Chart into ranges |This did not connect to other charts. Added Age range column to .csv file |
@@ -108,7 +106,6 @@ Known issues
   |   9    |”Next” and “Last” buttons did not work on Table |Event listener added to these buttons to globally rectify this |
   |   10   |Explorer displaying the charts which use viewbox resizing too small |Decided to leave this, as browser being phased out and rarely used |
   |   11   |Second intro paragraph did not fit on tablet size and was left in row alone | Removed from tablet view using media query |
-  |   12   |Stacked bar chart did not read well when using percentages to diplay types of attacks that were fatal |Opted to use actual count as this was clearer|
   |   13   |Table not scaling correctly on smaller devices |Used media query to remove table from smaller devices |
   |   14   |Needed to validate CSS for debugging purposes | Utilised jigsaw.W3 CSS Validator (zero errors) |
   |   15   |Needed to validate JavaScript for debugging purposes | Utilised jshint.com (no errors) |
