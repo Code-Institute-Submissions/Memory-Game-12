@@ -97,7 +97,7 @@ Known issues
 
   | Issue  |                 Description                     |       Solution                      |  
   | ------ |:-----------------------------------------------:|:-----------------------------------:|
-  |   1    |Attempted to connect dashboard directly to API but data proving unmanageable|Downloaded .csv file instead|
+  |   1    |Attempted to make both games mobile friendly but was unmanageable|Made for bigger screens, alert the user of this|
   |   2    |Unable to download export whole dataset due to issue with website |downloaded each year separately|
   |   3    |Issues with uniformity of the .csv data (e.g. spellings and capitalisation) |Amended these issues directly in .csv file|
   |   4    |Composite chart , Stacked bar chart and Bar graph not scaling correctly on smaller devices |Used viewbox resize to scale correctly |
@@ -114,11 +114,8 @@ Known issues
   |   15   |Needed to validate JavaScript for debugging purposes | Utilised jshint.com (no errors) |
   |   16   |Needed to validate HTML for debugging purposes | Utilised W3 Markup Validation Service (1 warning) |
   |   17   |HTML Validation warning "Section lacks heading" | This warning can be ignored as does not affect code |
-  |   18   |X-axis titles on Activities bar graph not displaying correctly in horizontal view |Used `text-anchor: end !important` in CSS to angle text |
-  |   19   |Data in .csv file was causing more columns in graphs for the same variable (e.g. Body Boarding and Boogie Boarding) | Amended to .cvs variable names to make more uniform |
-  |   20   |Header `Refresh Charts` button was not positioning correctly in Windows Edge | Used `float: inherit` in CSS to fix |
-  |   21   |Is HTML semantic and self explanatory  | Added further comments to index.html file |
-  |   22   |Is main.js self explanatory  | Added further comments to main.js file |
+  |   21   |Is HTML self explanatory  | Added further comments to index.html file |
+  |   22   |Is app.js self explanatory  | Added detail comments |
 
 ## Deployment
 
