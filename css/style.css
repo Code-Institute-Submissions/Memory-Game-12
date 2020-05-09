@@ -26,7 +26,6 @@ h2 {
 }
 
   /*--- Navigation bar ---*/
-
   .navbar {
     background:#6610f2;
   }
@@ -51,7 +50,6 @@ h2 {
   }
 
   /*--- Header ---*/
-
   .header {
     background-image: url('../images/tokyo-arcade.jpg');
     background-size: cover;
@@ -93,7 +91,6 @@ h2 {
   }
 
   /*--- Memory game grid ---*/
-
   *,
   *::before,
   *::after {
@@ -149,9 +146,7 @@ h2 {
     background: #6589F9 !important;
   }
  
-
 /*--- Simon game board ---*/
-
 #board {
   position: relative;
   width: 600px;
@@ -349,7 +344,6 @@ h2 {
   }
 }
   /*--- Footer ---*/
-
   .footer {
     
     color: #ccc;
@@ -376,7 +370,6 @@ h2 {
 }
 
   /*--- Contact form ---*/
-
   .features .form-control {
     border-radius: 0;
 }
@@ -393,7 +386,6 @@ h2 {
 }
 
   /*--- Media queries ---*/
-
   @media (max-width: 575.98px) {
     .description {
       left: 0;
@@ -417,7 +409,7 @@ h2 {
     }
   }
 
-  /*--- Media queries ---*/
+  /*--- Media queries simon game ---*/
   
   @media (max-width: 450px) {
     .main {

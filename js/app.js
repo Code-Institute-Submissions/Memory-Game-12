@@ -7,145 +7,145 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // MEMORY GAME
-    // Card options
-    const cardsArray = [
-        {
-            name: 'shell',
-            images: 'images/blueshell.png',
-        },
-        {
-            name: 'star',
-            images: 'images/star.png',
-        },
-        {
-            name: 'bobomb',
-            images: 'images/bobomb.png',
-        },
-        {
-            name: 'mario',
-            images: 'images/mario.png',
-        },
-        {
-            name: 'luigi',
-            images: 'images/luigi.png',
-        },
-        {
-            name: 'peach',
-            images: 'images/peach.png',
-        },
-        {
-            name: '1up',
-            images: 'images/1up.png',
-        },
-        {
-            name: 'mushroom',
-            images: 'images/mushroom.png',
-        },
-        {
-            name: 'thwomp',
-            images: 'images/thwomp.png',
-        },
-        {
-            name: 'bulletbill',
-            images: 'images/bulletbill.png',
-        },
-        {
-            name: 'coin',
-            images: 'images/coin.png',
-        },
-        {
-            name: 'goomba',
-            images: 'images/goomba.png',
-        },
-    ];
+// Card options
+const cardsArray = [
+    {
+        name: 'shell',
+        images: 'images/blueshell.png',
+    },
+    {
+        name: 'star',
+        images: 'images/star.png',
+    },
+    {
+        name: 'bobomb',
+        images: 'images/bobomb.png',
+    },
+    {
+        name: 'mario',
+        images: 'images/mario.png',
+    },
+    {
+        name: 'luigi',
+        images: 'images/luigi.png',
+    },
+    {
+        name: 'peach',
+        images: 'images/peach.png',
+    },
+    {
+        name: '1up',
+        images: 'images/1up.png',
+    },
+    {
+        name: 'mushroom',
+        images: 'images/mushroom.png',
+    },
+    {
+        name: 'thwomp',
+        images: 'images/thwomp.png',
+    },
+    {
+        name: 'bulletbill',
+        images: 'images/bulletbill.png',
+    },
+    {
+        name: 'coin',
+        images: 'images/coin.png',
+    },
+    {
+        name: 'goomba',
+        images: 'images/goomba.png',
+    },
+];
 // Duplicate array to create a match 
-    const gameGrid = cardsArray
-        .concat(cardsArray)
-        .sort(() => 0.5 - Math.random()); // Random selection of cards on each load
+const gameGrid = cardsArray
+    .concat(cardsArray)
+    .sort(() => 0.5 - Math.random()); // Random selection of cards on each load
 
-    let firstGuess = '';
-    let secondGuess = '';
-    let count = 0;
-    let previousTarget = null;
-    let delay = 1200;
+let firstGuess = '';
+let secondGuess = '';
+let count = 0;
+let previousTarget = null;
+let delay = 1200;
 // Get div with an id of root
-    const game = document.getElementById('game');
-    const grid = document.createElement('section'); // Create a section with a class of grid
-    grid.setAttribute('class', 'grid');
-    game.appendChild(grid);
+const game = document.getElementById('game');
+const grid = document.createElement('section'); // Create a section with a class of grid
+grid.setAttribute('class', 'grid');
+game.appendChild(grid);
 // For each item in the cards array
-    gameGrid.forEach(item => {
-        const { name, images } = item;
+gameGrid.forEach(item => {
+    const { name, images } = item;
 
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.dataset.name = name;
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.name = name;
 
-        const front = document.createElement('div');
-        front.classList.add('front');
+    const front = document.createElement('div');
+    front.classList.add('front');
 
-        const back = document.createElement('div');
-        back.classList.add('back');
-        back.style.backgroundImage = `url(${images})`;
+    const back = document.createElement('div');
+    back.classList.add('back');
+    back.style.backgroundImage = `url(${images})`;
 
-        grid.appendChild(card);
-        card.appendChild(front);
-        card.appendChild(back);
-    });
+    grid.appendChild(card);
+    card.appendChild(front);
+    card.appendChild(back);
+});
 // Functions that match elements when called
-    const match = () => {
-        const selected = document.querySelectorAll('.selected');
-        selected.forEach(card => {
-            card.classList.add('match');
-        });
-    };
-// Reset user guesses and remove selected
-    const resetGuesses = () => {
-        firstGuess = '';
-        secondGuess = '';
-        count = 0;
-        previousTarget = null;
-
-        var selected = document.querySelectorAll('.selected');
-        selected.forEach(card => {
-            card.classList.remove('selected');
-        });
-    };
-// Function will be call if both guesses match
-    grid.addEventListener('click', event => {
-        const clicked = event.target;
-
-        if (
-            clicked.nodeName === 'SECTION' ||
-            clicked === previousTarget ||
-            clicked.parentNode.classList.contains('selected') ||
-            clicked.parentNode.classList.contains('match')
-        ) {
-            return;
-        }
-// Counts to two and then adds two cards
-        if (count < 2) {
-            count++;
-            if (count === 1) {
-                firstGuess = clicked.parentNode.dataset.name;
-                console.log(firstGuess);
-                clicked.parentNode.classList.add('selected');
-            } else {
-                secondGuess = clicked.parentNode.dataset.name;
-                console.log(secondGuess);
-                clicked.parentNode.classList.add('selected');
-            }
-
-            if (firstGuess && secondGuess) {
-                if (firstGuess === secondGuess) {
-                    setTimeout(match, delay);
-                }
-                setTimeout(resetGuesses, delay);
-            }
-            previousTarget = clicked;
-        }
-
+const match = () => {
+    const selected = document.querySelectorAll('.selected');
+    selected.forEach(card => {
+        card.classList.add('match');
     });
+};
+// Reset user guesses and remove selected
+const resetGuesses = () => {
+    firstGuess = '';
+    secondGuess = '';
+    count = 0;
+    previousTarget = null;
+
+    var selected = document.querySelectorAll('.selected');
+    selected.forEach(card => {
+        card.classList.remove('selected');
+    });
+};
+// Function will be call if both guesses match
+grid.addEventListener('click', event => {
+    const clicked = event.target;
+
+    if (
+        clicked.nodeName === 'SECTION' ||
+        clicked === previousTarget ||
+        clicked.parentNode.classList.contains('selected') ||
+        clicked.parentNode.classList.contains('match')
+    ) {
+        return;
+    }
+    // Counts to two and then adds two cards
+    if (count < 2) {
+        count++;
+        if (count === 1) {
+            firstGuess = clicked.parentNode.dataset.name;
+            console.log(firstGuess);
+            clicked.parentNode.classList.add('selected');
+        } else {
+            secondGuess = clicked.parentNode.dataset.name;
+            console.log(secondGuess);
+            clicked.parentNode.classList.add('selected');
+        }
+
+        if (firstGuess && secondGuess) {
+            if (firstGuess === secondGuess) {
+                setTimeout(match, delay);
+            }
+            setTimeout(resetGuesses, delay);
+        }
+        previousTarget = clicked;
+    }
+
+});
 //end of memory card game
 
 
@@ -319,7 +319,7 @@ const UserExperience = {
             $('#yellow').removeClass('yellowClicked');
         }, 1600);
     },
-    
+
     //Function that controls the white lights after game starts
     ShowStart: function () {
 
@@ -388,7 +388,6 @@ const UserExperience = {
     }
 };
 
-
 //Object in charge of some game functionalities
 const AppController = {
 
@@ -414,7 +413,6 @@ const AppController = {
     ShowHighest: (score) => {
         $('#highest-level').text(`${score.toString().padStart(2, '0')}`);
     }
-
 };
 
 //Set of functions on click

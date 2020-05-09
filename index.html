@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!-- Audio files -->
+    <!-- Audio files simon game -->
     <audio id="success-sound" src="audio/success.mp3"></audio>
     <audio id="red-sound" src="audio/red.mp3"></audio>
     <audio id="green-sound" src="audio/green.mp3"></audio>
@@ -54,9 +54,9 @@
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     These games are best enjoyed on desktop!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
+                </div>
                 <h1>MEMORY GAMES</h1>
                 <p>Playing memory games has many unique benefits, and there are many to play, kids and adults can
                     strengthen their muscle
@@ -68,7 +68,6 @@
             </div>
         </div>
     </header>
-
     <!-- Memory game -->
     <div id="memory-game" class="container-fluid">
         <h2>MEMORY CARD GAME</h2>
@@ -79,13 +78,12 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-dark">Start the game by clicking on any of the cards</li>
             <li class="list-group-item list-group-item-dark">To win find all the matches</li>
-            <li class="list-group-item list-group-item-dark">Keep trying until you find the all</li>
-            <li class="list-group-item list-group-item-dark">Click refresh games on the navbar to start again
+            <li class="list-group-item list-group-item-dark">Keep trying until you find them all</li>
+            <li class="list-group-item list-group-item-dark">Click 'Refresh games' on the navbar to start again
             </li>
             <li class="list-group-item list-group-item-dark">Enjoy!</li>
         </ul>
     </div>
-
     <!-- Simon game -->
     <section class="main"></section>
     <div id="simon">
@@ -138,42 +136,36 @@
             <li class="list-group-item list-group-item-dark">Enjoy!</li>
         </ul>
     </div>
-    
     <!-- Page footer, information and get intouch feature -->
     <footer>
-    <div class="container features" id="footer-contact">
-        
-                <h3 class="feature-title">Get in Touch!</h3>
-                <div class="center-form">
-                    <form onsubmit="return sendMail(this);">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="fullname" placeholder="Name"
-                                required />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="emailaddress" class="form-control" id="emailaddress"
-                                placeholder="Email" required />
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="5" name="projectsummary" class="form-control" id="gameapp"
-                                placeholder="Message" required></textarea>
-                            <button type="submit" class="btn btn-dark btn-lg">Send</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="container features" id="footer-contact">
+            <h3 class="feature-title">Get in Touch!</h3>
+            <div class="center-form">
+                <form onsubmit="return sendMail(this);">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="fullname" placeholder="Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="emailaddress" class="form-control" id="emailaddress"
+                            placeholder="Email" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" name="projectsummary" class="form-control" id="gameapp" placeholder="Message"
+                            required></textarea>
+                        <button type="submit" class="btn btn-dark btn-lg">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-    <p>
-        <a href="#">Back to top</a>
-      </p>
-    <div class="footer-copyright text-center">© 2020 Copyright: Created by <a
-            href="https://github.com/GiselleNessi">Giselle Chacon</a></div>
-</footer>
-
-   
-    <!-- Scripts, Fontawesome, Bootstrap, Sweet alert JS, Email.JS, jQuery -->
-    <!-- App Javascript -->
+        </div>
+        </div>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+        <div class="footer-copyright text-center">© 2020 Copyright: Created by <a
+                href="https://github.com/GiselleNessi">Giselle Chacon</a></div>
+    </footer>
+    <!-- Scripts, App Javascript, Fontawesome, Bootstrap, Email.JS -->
     <script src="js/app.js"></script>
     <script src="js/sendEmail.js"></script>
     <script src="https://kit.fontawesome.com/bc13f3adc8.js" crossorigin="anonymous"></script>
